@@ -4,7 +4,7 @@ var objUser = [
         password: "123"
     },
     {
-        username: "Sophia",
+        username: "Soph",
         password: "456"
     },
     {
