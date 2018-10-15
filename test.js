@@ -1,3 +1,0 @@
-var concert = (Michael
-Jackson
-)
