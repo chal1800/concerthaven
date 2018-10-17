@@ -3,45 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="signup.js"></script>
 </head>
+<body>
 <!-- Sign Up -->
-    <div class="container">
-        <h1>Sign Up Concerthaven</h1>
-        <!-- Call validateSignUp function -->
-        <body>
-        <form name="SignUpForm" action="/submit.php" onsubmit="return validateSignUp ()" mehtod="post">
-            <p>Please fill in this form to create an account.</p>
-            <hr>
+<div class="container">
+    <h1>Sign Up Concerthaven</h1>
+    <!-- Call validateSignUp function -->
+    <form id="head"></p><br>
 
-            <label for="firstName"><b>First Name</b></label>
-            <input type="text" placeholder="Enter First Name" name="firstName" required>
+        <p>Please fill in this form to create an account.</p>
+        <hr>
 
-            <label for="surName"><b>Surname</b></label>
-            <input type="text" placeholder="Surname" name="surName" required>
+        <b>First Name</b>
+        <input type="text" placeholder="Enter First Name" name="firstName" id="firstName">
 
-            <label for="Username"><b>Username</b></label>
-            <input type="text" placeholder="Create a Username" name="Username" required>
+        <b>Surname</b>
+        <input type="text" placeholder="Surname" name="surName" id="surName">
 
-            <label for="email"><b>Email</b></label>
-            <input type="text" placeholder="Enter Email" name="email" required>
+        <b>Username</b>
+        <input type="text" placeholder="Create a Username" name="userName" id="userName">
 
-            <label for="password"><b>Password</b></label>
-            <input type="password" placeholder="Create a Password" name="password" required>
+        <b>Email</b>
+        <input type="text" placeholder="Enter Email" name="email" id="email">
 
-            <label for="password-repeat"><b>Repeat Password</b></label>
-            <input type="password" placeholder="Repeat Password" name="password-repeat" required>
+        <b>Password</b>
+        <input type="password" placeholder="Create a Password" name="password" id="password">
 
-            <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+        <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
-            <div class="clearfix">
-                <button type="button" class="cancelbtn">Cancel</button>
-                <button type="submit" class="signupbtn">Sign Up</button>
-            </div>
+        <div class="clearfix">
+            <button type="button" class="cancelbtn">Cancel</button>
+            <input type="button" value="Signup" id="signupbtn" onclick="return validateSignUp()"/>
+        </div>
 
-            <div class="container signin">
-                <p>Already have an account? <a href="#">Login</a>.</p>
-            </div>
-    </div>
-</form>
+        <div class="container signin">
+            <p>Already have an account? <a href="#">Login</a>.</p>
+        </div>
+    </form>
+</div>
+
 </body>
 </html>
