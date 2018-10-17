@@ -6,15 +6,19 @@
 </head>
 Where are you?
 <body>
-<select id="id_of_select">
-    <option></option>
-    <option value=>Frederiksberg</option>
-    <option value=>Vesterbro</option>
-    <option value=>Nørrebro</option>
+<form>
+    <select id="locSelect">
+        <option value="Frederiksberg">Frederiksberg</option>
+        <option value="Vesterbro">Vesterbro</option>
+        <option value="Nørrebro">Nørrebro</option>
 </select>
+</form>
+<p> Show me your location</p>
 
-<button id="btn">Show selected</button>
+<button type="button" onclick="getCoords(); distanceVega()">Show selected</button>
 
-<div id="display"></div>
+<p id="demo"></p>
+
+<script src="geoloc.js"></script>
 </body>
 </html>
