@@ -43,7 +43,7 @@ function validateSignUp() {
       }
   */
     //check each input in the order that it appears in form
-    if (inputAlphabet(firstName) && lengthDefine(firstName, 6, 10)) {
+    if (inputAlphabetfirstName(firstName, "* For your name please use alphabets only *") && lengthDefine(firstName, 6, 10)) {
         if (inputAlphabet(surName) && lengthDefine(surName, 6, 10)) {
             if (textAlphanumeric(userName)) {
                 if (emailValidation(email)) {
@@ -55,18 +55,17 @@ function validateSignUp() {
         }
     }
     return false;
-*/
 }
 
 //function that checks whether input text is an alphabetic or not
 
 // function that checks whether input text is an alphabetic character or not
-function inputAlphabet(inputtext) {
+function inputAlphabetfirstName(inputtext, alertMsg) {
     var alphaExp = /^[a-zA-Z]+$/;
     if (inputtext.value.match(alphaExp)) {
         return true;
     } else {
-        alert("Please use alphabets only");
+        document.getElementById('p1').innerText = alertMsg;  //this segment displays the validation rule
         return false;
     }
 }
@@ -89,7 +88,7 @@ function lengthDefine(inputtext, min, max) {
     if (uInput.length >= min && uInput.length <= max) {
         return true;
     } else {
-        alert("Minimum 6 and maximum 10 characters");
+        document.getElementById('p1').innerText = "* Please enter between " + min + " and " + max + " characters *";  //this segment displays the validation rule
         return false;
     }
 }
