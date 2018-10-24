@@ -18,6 +18,7 @@ class Concert {
         this.concertGenre = concertGenre;
         this.ticketCount = ticketCount;
         this.concertTime = concertTime;
+        this.concertDate = concertDate;
     }
 }
 
