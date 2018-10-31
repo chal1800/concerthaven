@@ -30,3 +30,26 @@ users.forEach(function (user) {
     console.log(user.describe());
 });
 */
+/*
+      //check empty form fields
+      if (firstName.value === "") {
+          alert("Please fill in your first name");
+          return false;
+      }
+      if (surName.value === "") {
+          alert("Please fill in your Surname");
+          return false;
+      }
+      if (userName.value === "") {
+          alert("Please fill in your Username");
+          return false;
+      }
+      if (email.value === "") {
+          alert("Please fill in your email");
+          return false;
+      }
+      if (password.value === "") {
+          alert("Please choose and fill in a password");
+          return false;
+      }
+      */
