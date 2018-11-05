@@ -28,6 +28,8 @@ function validateSignUp() {
             if (textAlphanumericUserName(userName, "* For your username please use alphabets and numbers only *")) {
                 if (emailValidation(email, "* Please enter a valid email address *")) {
                     if (textAlphanumericPassword(password, "* Please use alphabets and numbers only *") && lengthDefinePassword(password, 6, 10)) {
+                        functionPushStorage();
+                        window.location = "loginpage.html";
                         return true;
                     }
                     }
@@ -54,6 +56,15 @@ function functionPushStorage() {
     window.location = "index.html";
 }
 
+//redirect to login page as soon as user is registered
+/*
+function goToLogin () {
+    if (validateSignUp() return true;)
+    {
+        window.location = "loginpage.html";
+    }
+}
+*/
 // function that checks whether input text is an alphabetic character or not
 function inputAlphabetfirstName(inputtext, alertMsg) {
     var alphaExp = /^[a-zA-Z]+$/;
@@ -88,7 +99,7 @@ function textAlphanumericUserName(inputtext, alertMsg) {
 
 // Function that checks whether an user entered valid email address or not and displays alert message on wrong email address format.
 
-function emailValidation(inputtext) {
+function emailValidation(inputtext, alertMsg) {
     var emailExp = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
     if (inputtext.value.match(emailExp)) {
         return true;
@@ -143,6 +154,5 @@ function lengthDefinePassword(inputtext, min, max) {
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("signupbtn").addEventListener("click", function () {
         validateSignUp();
-        functionPushStorage();
     });
 });
