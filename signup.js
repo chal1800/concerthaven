@@ -1,17 +1,20 @@
 
 //Sign up - Form validation
+//validateSignUp - this function is triggered when the user is clicking on the submit button
 
-//If a form field (name) is empty, this function alerts a message, and returns false, to prevent the form from being submitted
 function validateSignUp() {
-  //reference to fields
+//reference to fields; set the input of the variables
       var firstName = document.getElementById("firstName");
       var surName = document.getElementById("surName");
       var userName = document.getElementById("userName");
       var email = document.getElementById("email");
       var password = document.getElementById("password");
-
+//store inputs of fields in an array in order to loop through it in the next step
     var inputFields = [firstName.value, surName.value, userName.value, email.value, password.value];
-// check empty form fields
+
+//check for empty fields - Loop through inputFields array
+//if one field is empty, this function alerts a message, and returns false, to prevent the form from being submitted
+//why did I put console.log? -> don't really need that?
 
     for (var i = 0; i < 4; i++) {
         if (inputFields[i] === "") {
@@ -22,14 +25,20 @@ function validateSignUp() {
         }
     }
 
-    //check each input in the order that it appears in form
+//check each input field in the order that it appears in form
+//each input field has different restrictions; the if function calls the corresponding function
+//if function for first field is fulfilled -> triggers next if function for next field
+//testing: different use cases
     if (inputAlphabetfirstName(firstName, "* For your first name please use alphabets only *") && lengthDefineFirstName(firstName, 3, 10)) {
         if (inputAlphabetSurName(surName, "* For your surname please use alphabets only *") && lengthDefineSurName(surName, 6, 10)) {
             if (textAlphanumericUserName(userName, "* For your username please use alphabets and numbers only *")) {
                 if (emailValidation(email, "* Please enter a valid email address *")) {
                     if (textAlphanumericPassword(password, "* Please use alphabets and numbers only *") && lengthDefinePassword(password, 6, 10)) {
+                        // calls function functionPushStorage()
                         functionPushStorage();
+                        //redirects to html login page
                         window.location = "loginpage.html";
+                        //exit function
                         return true;
                     }
                     }
@@ -39,8 +48,10 @@ function validateSignUp() {
     return false;
 }
 
-// Create an array called users
+//Sign up - storing new user data
+//create an array called users
 users = [];
+//fill array with already existing users from storage?
 var users = JSON.parse(localStorage.getItem("users"));
 
 // pushing new user into existing array users and storing it using localStorage
@@ -50,22 +61,18 @@ function functionPushStorage() {
     userName = document.getElementById("userName").value;
     email = document.getElementById("email").value;
     password = document.getElementById("password").value;
+//push new user data in array users
     users.push(new User(firstName, surName, userName, email, password));
     console.log(users);
+//stringify array users then store array in local storage
     localStorage.setItem('users', JSON.stringify(users));
+//why do I need the windwow.location? -> I don't want to redirect after I called this function -> I'm doing this in the singup function
     window.location = "index.html";
 }
 
-//redirect to login page as soon as user is registered
-/*
-function goToLogin () {
-    if (validateSignUp() return true;)
-    {
-        window.location = "loginpage.html";
-    }
-}
-*/
-// function that checks whether input text is an alphabetic character or not
+//functions for validating Sign up -> called by validateSignUp()
+//function that checks whether input text is an alphabetic character or not
+//needs the inputtext and the alertMsg
 function inputAlphabetfirstName(inputtext, alertMsg) {
     var alphaExp = /^[a-zA-Z]+$/;
     if (inputtext.value.match(alphaExp)) {
