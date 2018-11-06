@@ -25,10 +25,11 @@ venue = [{
     }
 ]
 
-//Array for the user distance to the venues for passing to filters//
+//Create an array for the user distance to the venues for passing to filters//
 distanceUser = []
 
-//Match user location name with coordinates for the user location when the user clicks on button//
+
+//Match user location name with coordinates for the user location when the user picks location from the list and clicks on button//
 function getCoords() {
     var userL = document.getElementById("locSelect").value;
     if ((userL === "Frederiksberg")) {
@@ -46,7 +47,6 @@ function getCoords() {
     }
     document.getElementById("demo").innerHTML = userL;
 
-//clear existing array values when new location is selected to have a unique array of distances per location//
 
 //distance function applied on user location and all venues; result is object with name of location and distance of the user//
 
@@ -71,18 +71,16 @@ function getCoords() {
     };
     distanceUser.push(distanceForum);
     console.log("Forum", distanceForum.km.toFixed(2));
+
 }
 
 
+//clear existing array values when new location is selected to have a unique array of distances per location when the user presses the button//
 function cleararray() {
     distanceUser.length = 0;
 }
 
-document.getElementById("buttonClick").addEventListener("click", function () {
-    cleararray();
-    console.log(distanceUser)
-    ;
-});
+
 
 
 //Transform coordinate distances into distance in km//
@@ -102,10 +100,22 @@ function distance(lat1, lon1, lat2, lon2) {
     return dist;
 }
 
-//Apply "getCoords" function on users dropdown selection //
+
+//Apply "getCoords", "filter" & "cleararray" functions on users button click after dropdown choice //
 document.getElementById("buttonClick").addEventListener("click", function () {
     getCoords();
+    filter();
+    cleararray();
 });
+distances = [];
+
+//filtering distanceUser for the users input of his max. willigness to travel and return new, filtered array "distances"
+function filter() {
+    distances = distanceUser.filter(choice => choice.km < document.getElementById("distSelect").value);
+    console.log(distances);
+    showDist = document.getElementById("demo").innerHTML = JSON.stringify(distances, null, 4);
+    return (distances);
+};
 
 
 
