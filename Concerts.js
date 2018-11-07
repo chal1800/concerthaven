@@ -4,7 +4,7 @@ var filteredConcerts = [];
 //Create concerts
 
 concerts = [
-    new concert(
+    new concert{
         artistName
 :
 'Adele',
@@ -26,9 +26,9 @@ concerts = [
     concertDate
 :
 2019 - 01 - 25,
-),
+    },
 
-new concert(
+    new concert{
     artistName
 :
 'Asap Rocky',
@@ -50,8 +50,8 @@ new concert(
     concertDate
 :
 2019 - 01 - 27,
-),
-new concert(
+    },
+    new concert{
     artistName
 :
 'Bocelli',
@@ -73,8 +73,8 @@ new concert(
     concertDate
 :
 2019 - 01 - 28,
-),
-new concert(
+    },
+    new concert{
     artistName
 :
 'Fever Ray',
@@ -96,8 +96,8 @@ new concert(
     concertDate
 :
 2019 - 01 - 29,
-),
-new concert(
+    },
+    new concert{
     artistName
 :
 'Justice',
@@ -119,9 +119,9 @@ new concert(
     concertDate
 :
 2019 - 01 - 29,
-),
+    },
 
-new concert(
+    new concert{
     artistName
 :
 'Azealia Banks',
@@ -143,9 +143,9 @@ new concert(
     concertDate
 :
 2019 - 01 - 30,
-),
+    },
 
-new concert(
+    new concert{
     artistName
 :
 'MGMT',
@@ -167,9 +167,9 @@ new concert(
     concertDate
 :
 2019 - 02 - 05,
-),
+    },
 
-new concert(
+    new concert{
     artistName
 :
 'Florence + The Machine',
@@ -191,8 +191,8 @@ new concert(
     concertDate
 :
 2019 - 02 - 07,
-),
-new concert(
+    },
+    new concert{
     artistName
 'Placido Domingo',
     concertName
@@ -209,11 +209,8 @@ new concert(
     concertTime
 :
 '19:00',
-    concertDate
-:
-2019 - 02 - 0
-9,
-)
+        concertDate: 2019 - 02 - 09,
+    }
 ]
 ;
 
