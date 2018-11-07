@@ -6,33 +6,61 @@ var distanceVega = {};
 var distanceDenGraHal = {};
 var distanceForum = {};
 
-//Object with all properties for the specific venues//
+//Initiate array "venues" to store variables for each concert hall
+venues = [];
 
-venue = [{
-    name: "vega",
-    lat: 55.668104,
-    lon: 12.544605
-},
-    {
-        name: "Den Gra Hal",
-        lat: 55.674656,
-        lon: 12.600719
-    },
-    {
-        name: "Forum",
-        lat: 55.681285,
-        lon: 12.553624
+//Initiate an array for the distance from user's position to the venue's position in km
+distanceUser = [];
+
+//Initiate class "Venue" to assign variables for specific concert venues incl. name, latitude, longitude
+class Venue {
+    constructor(name, lat, lon) {
+        this.name = name;
+        this.lat = lat;
+        this.lon = lon
     }
-]
+}
 
-//Create an array for the user distance to the venues for passing to filters//
-distanceUser = []
+//Create variables for the specific venues
+var venue1 = new Venue("Vega", 55.668104, 12.544605);
 
+var venue2 = new Venue("Den Gra Hal", 55.674656, 12.600719);
 
+var venue3 = new Venue("Forum", 55.681285, 12.553624);
+venues.push(venue1, venue2, venue3);
+
+//Initiate class for neighborhood
+class Bro {
+    constructor(name, lat, lon) {
+        this.name = name;
+        this.lat = lat;
+        this.lon = lon;
+    }
+}
+
+//Define variables for the specific neighborhoods
+bros = []
+var bro1 = new Bro("Frederiksberg", 55.676936, 12.506579);
+var bro2 = new Bro("Nørrebro", 55.699031, 12.556984);
+var bro3 = new Bro("Vesterbro", 55.664409, 12.541514);
+
+//Push them into array with all neighborhoods
+bros.push(bro1, bro2, bro3);
 //Match user location name with coordinates for the user location when the user picks location from the list and clicks on button//
 function getCoords() {
     var userL = document.getElementById("locSelect").value;
-    if ((userL === "Frederiksberg")) {
+    if (userL === bro1.name) {
+        userLocation.uLong = bro1.lat;
+        userLocation.uLat = bro1.lon;
+    } else if (userL === bro2.name) {
+        userLocation.uLong = bro2.lat;
+        userLocation.uLat = bro2.lon;
+    } else if (userL === bro3.name) {
+        userLocation.uLong = bro3.lat;
+        userLocation.uLat = bro3.lon;
+    }
+    ;
+    /*if ((userL === "Frederiksberg")) {
         userLocation.uLong = 55.676936;
         userLocation.uLat = 12.506579;
 
@@ -44,7 +72,7 @@ function getCoords() {
         userLocation.uLong = 55.664409;
         userLocation.uLat = 12.541514;
 
-    }
+    } */
     document.getElementById("demo").innerHTML = userL;
 
 
@@ -52,7 +80,7 @@ function getCoords() {
 
     var distanceVega = {
         name: "Vega",
-        km: distance(userLocation.uLong, userLocation.uLat, venue[0].lat, venue[0].lon)
+        km: distance(userLocation.uLong, userLocation.uLat, venues[0].lat, venues[0].lon)
     };
     //result pushed into distanceUser array//
     distanceUser.push(distanceVega);
@@ -60,14 +88,14 @@ function getCoords() {
 
     var distanceDenGraHal = {
         name: "Den Gra Hal",
-        km: distance(userLocation.uLong, userLocation.uLat, venue[1].lat, venue[1].lon)
+        km: distance(userLocation.uLong, userLocation.uLat, venues[1].lat, venues[1].lon)
     };
     distanceUser.push(distanceDenGraHal);
     console.log("Den Gra Hal", distanceDenGraHal.km.toFixed(2));
 
     var distanceForum = {
         name: "Forum",
-        km: distance(userLocation.uLong, userLocation.uLat, venue[2].lat, venue[2].lon)
+        km: distance(userLocation.uLong, userLocation.uLat, venues[2].lat, venues[2].lon)
     };
     distanceUser.push(distanceForum);
     console.log("Forum", distanceForum.km.toFixed(2));
@@ -76,7 +104,7 @@ function getCoords() {
 
 
 //clear existing array values when new location is selected to have a unique array of distances per location when the user presses the button//
-function cleararray() {
+function clearArray() {
     distanceUser.length = 0;
 }
 
@@ -101,21 +129,20 @@ function distance(lat1, lon1, lat2, lon2) {
 }
 
 
-//Apply "getCoords", "filter" & "cleararray" functions on users button click after dropdown choice //
+//Apply "getCoords", "filter" & "clearArray" functions on users button click after dropdown choice //
 document.getElementById("buttonClick").addEventListener("click", function () {
     getCoords();
     filter();
     cleararray();
 });
-distances = [];
 
-//filtering distanceUser for the users input of his max. willigness to travel and return new, filtered array "distances"
+//filtering distanceUser for the users input of his max. willingness to travel and return new, filtered array "distances"
 function filter() {
-    distances = distanceUser.filter(choice => choice.km < document.getElementById("distSelect").value);
+    let distances = distanceUser.filter(choice => choice.km < document.getElementById("distSelect").value);
     console.log(distances);
-    showDist = document.getElementById("demo").innerHTML = JSON.stringify(distances, null, 4);
+    document.getElementById("demo").innerHTML = JSON.stringify(distances, null, 4);
     return (distances);
-};
+}
 
 
 
