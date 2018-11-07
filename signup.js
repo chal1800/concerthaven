@@ -72,11 +72,14 @@ function functionPushStorage() {
 
 //functions for validating Sign up -> called by validateSignUp()
 //function that checks whether input text is an alphabetic character or not
-//needs the inputtext and the alertMsg
+//needs the parameters inputtext and the alertMsg
 function inputAlphabetfirstName(inputtext, alertMsg) {
+    //Regex includes all letters a-z, upper and lower case, no restriction on length
     var alphaExp = /^[a-zA-Z]+$/;
+    //if function checks value of inputtext against the regex alphaExp
     if (inputtext.value.match(alphaExp)) {
         return true;
+        //inputtext doesn't match alphaExp -> .innerText
     } else {
         document.getElementById('p1').innerText = alertMsg;  //this segment displays the validation rule
         return false;
@@ -95,8 +98,8 @@ function inputAlphabetSurName(inputtext, alertMsg) {
 
 //function that checks whether input text includes alphabetic and numeric characters.
 function textAlphanumericUserName(inputtext, alertMsg) {
-    var alphaExp = /^[0-9a-zA-Z]+$/;
-    if (inputtext.value.match(alphaExp)) {
+    var alphanumericExp = /^[0-9a-zA-Z]+$/;
+    if (inputtext.value.match(alphanumericExp)) {
         return true;
     } else {
         document.getElementById('p3').innerText = alertMsg;  //this segment displays the validation rule
@@ -118,8 +121,8 @@ function emailValidation(inputtext, alertMsg) {
 
 //function that checks whether input text includes alphabetic and numeric characters.
 function textAlphanumericPassword(inputtext, alertMsg) {
-    var alphaExp = /^[0-9a-zA-Z]+$/;
-    if (inputtext.value.match(alphaExp)) {
+    var alphanumericExp = /^[0-9a-zA-Z]+$/;
+    if (inputtext.value.match(alphanumericExp)) {
         return true;
     } else {
         document.getElementById('p3').innerText = alertMsg;  //this segment displays the validation rule
