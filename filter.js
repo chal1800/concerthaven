@@ -1,36 +1,36 @@
-/*STORES*/
+/*VENUES*/
 
 //Coffee Stores!
-var store1 = new Store("Starbucks", "https://www.starbucks.com", "/img/starbucks.jpg");
-var store2 = new Store("Dunkin Donuts", "https://www.dunkin-donuts.com", "img/dunkin.jpg");
-var store3 = new Store("MyPlace", "https://www.myplace.com", "img/myplace.jpg");
+var venue1 = new Venue("Vega", "https://vega.dk/", "vega.jpg");
+var venue2 = new Venue("Forum", "http://www.forumcopenhagen.dk/", "forum.jpg");
+var venue3 = new Venue("Den Grå Hal", "https://www.dengraahal.dk/", "Den Grå Hal.jpg");
 
-//Push stores to an array
-var stores = [];
-stores.push(store1, store2, store3);
+//Push venues to an array
+var venues = [];
+venues.push(venue1, venue2, venue3);
 
-/*COFFEES*/
-//Generate some great coffees!
-addCoffee(store1, "cappuccino", 45);
-addCoffee(store2, "cappuccino", 40);
-addCoffee(store3, "latte", 30);
-addCoffee(store3, "espresso", 14);
-addCoffee(store1, "arabica", 20);
-addCoffee(store3, "cappuccino", 12);
-addCoffee(store2, "espresso", 42);
-addCoffee(store2, "latte", 500);
-addCoffee(store1, "arabica", 5);
-addCoffee(store1, "espresso", 12);
-addCoffee(store3, "arabica", 43);
-addCoffee(store1, "cappuccino", 100);
-addCoffee(store3, "latte", 24);
-addCoffee(store3, "arabica", 29);
-addCoffee(store2, "arabica", 74);
-addCoffee(store1, "arabica", 35);
+/*Concerts*/
+//Show concerts
+addConcert(venue1, "", 45);
+addConcert(venue2, "cappuccino", 40);
+addConcert(store3, "latte", 30);
+addConcert(store3, "espresso", 14);
+addConcert(store1, "arabica", 20);
+addConcert(store3, "cappuccino", 12);
+addConcert(store2, "espresso", 42);
+addConcert(store2, "latte", 500);
+addConcert(store1, "arabica", 5);
+addConcert(store1, "espresso", 12);
+addConcert(store3, "arabica", 43);
+addConcert(store1, "cappuccino", 100);
+addConcert(store3, "latte", 24);
+addConcert(store3, "arabica", 29);
+addConcert(store2, "arabica", 74);
+addConcert(store1, "arabica", 35);
 
 //FUNCTIONS
 
-var coffees = getCoffees();
+var concerts = getConcerts();
 
 
 function filter(dataType, operation, attributeValue, filterValue) {
