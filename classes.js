@@ -55,51 +55,33 @@ function getCurrentUser() {
 /*
 Global Arrays
 */
-var coffees = [];
-var stores = [];
-var favorites = [];
-var users = [];
+var concerts = [];
+
 
 /*
 ADD FUNCTIONS
 */
 
-function addCoffee(store, type, price) {
-    var coffee = new Coffee(store, type, price);
-    coffees.push(coffee);
+function addConcert(venue, artist, concert
+
+name, price, genre, time, date
+)
+{
+    var concert = new Concert(artist, concertname, price, venue, genre, time
+    date
+)
+    ;
+    concerts.push(concert);
 }
 
-function adduser(name, username, email, password, loggedIn) {
-    var user = new User(name, username, email, password, loggedIn);
-    users.push(user);
-}
-
-function addFavorite(user, coffee) {
-    var favorite = new Favorite(user, coffee);
-    favorites.push(favorite);
-}
-
-function addStore(name, homepage, picture) {
-    var store = new Store(name, homepage, picture);
-    stores.push(store);
 }
 
 /*
 GET FUNCTIONS
 */
 
-function getCoffees() {
-    return coffees;
+function getConcerts() {
+    return concerts;
 }
 
-function getUsers() {
-    return users;
-}
-
-function getFavorites() {
-    return favorites;
-}
-
-function getStores() {
-    return stores;
 }

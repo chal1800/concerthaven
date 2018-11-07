@@ -10,23 +10,50 @@ var venues = [];
 venues.push(venue1, venue2, venue3);
 
 /*Concerts*/
-//Show concerts
-addConcert(venue1, "", 45);
-addConcert(venue2, "cappuccino", 40);
-addConcert(store3, "latte", 30);
-addConcert(store3, "espresso", 14);
-addConcert(store1, "arabica", 20);
-addConcert(store3, "cappuccino", 12);
-addConcert(store2, "espresso", 42);
-addConcert(store2, "latte", 500);
-addConcert(store1, "arabica", 5);
-addConcert(store1, "espresso", 12);
-addConcert(store3, "arabica", 43);
-addConcert(store1, "cappuccino", 100);
-addConcert(store3, "latte", 24);
-addConcert(store3, "arabica", 29);
-addConcert(store2, "arabica", 74);
-addConcert(store1, "arabica", 35);
+//Show concerts (venue, artist, concert name, price, genre, time date)
+
+addConcert(venue2, "Adele", "Rolling in the deep", 450, "Pop-Rock", 19
+:
+00, 2019 - 01 - 25
+)
+;
+addConcert(venue2, "Asap Rocky", "Long Live Asap", 420, "Hip-Hop", 20
+:
+00, 2019 - 01 - 27
+)
+;
+addConcert(venue2, "Bocelli", "Forever", 450, "Classic", 19
+:
+00, 2019 - 01 - 28
+)
+;
+addConcert(venue3, "Fever Ray", "When I grow up", 300, "Electro", 19
+:
+00, 2019 - 01 - 29
+)
+;
+addConcert(venue3, "Justice", "Phantom", 270, "Electro", 20
+:
+00, 2019 - 01 - 29
+)
+;
+addConcert(venue3, "Azealia Banks", "Fantasea", 290, "Hip-Hop", "20:00", 2019 - 01 - 30);
+addConcert(venue1, "MGMT", "Kids", 310, "Pop-Rock", 21
+:
+00, 2019 - 02 - 05
+)
+;
+addConcert(venue1, "Florence + The Machine", "High as Hope", 400, "Pop-Rock", 20
+:
+00, 2019 - 02 - 07
+)
+;
+addConcert(venue1, "Placido Domingo", "Fly", 420, "Classic", 19
+:
+00, 2019 - 02 - 0
+9
+)
+;
 
 //FUNCTIONS
 

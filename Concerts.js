@@ -82,7 +82,7 @@ concerts = [
     },
     new concert{
         artistName'Placido Domingo',
-        concertName'Fantasea',
+        concertName'Fly',
         ticketPrice: 420,
         venueName: 'Vega',
         concertGenre: 'Classic',
