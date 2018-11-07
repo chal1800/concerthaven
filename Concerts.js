@@ -194,10 +194,8 @@ new concert(
 ),
 new concert(
     artistName
-:
 'Placido Domingo',
     concertName
-:
 'Fantasea',
     ticketPrice
 :
