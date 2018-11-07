@@ -170,45 +170,21 @@ concerts = [
     },
 
     new concert{
-    artistName
-:
-'Florence + The Machine',
-    concertName
-:
-'High as Hope',
-    ticketPrice
-:
-400,
-    venueName
-:
-'Vega',
-    concertGenre
-:
-'Pop-Rock',
-    concertTime
-:
-'20:00',
-    concertDate
-:
-2019 - 02 - 07,
+        artistName: 'Florence + The Machine',
+        concertName: 'High as Hope',
+        ticketPrice: 400,
+        venueName: 'Vega',
+        concertGenre: 'Pop-Rock',
+        concertTime: '20:00',
+        concertDate: 2019 - 02 - 07,
     },
     new concert{
-    artistName
-'Placido Domingo',
-    concertName
-'Fantasea',
-    ticketPrice
-:
-420,
-    venueName
-:
-'Vega',
-    concertGenre
-:
-'Classic',
-    concertTime
-:
-'19:00',
+        artistName'Placido Domingo',
+        concertName'Fantasea',
+        ticketPrice: 420,
+        venueName: 'Vega',
+        concertGenre: 'Classic',
+        concertTime: '19:00',
         concertDate: 2019 - 02 - 09,
     }
 ]
