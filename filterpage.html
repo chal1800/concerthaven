@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body class="body">
+
+
+<h1> Welcome to CONCERTHAVEN </h1>
+<p> Find your favorite concerts in Copenhagen </p>
+
+
+<br>
+
+
+<h2>Artists A-Z</h2>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for your favorite artists"
+       title="Type in a name">
+
+<ul id="myUL">
+    <li><a href="#">Adele</a></li>
+    <li><a href="#">Asap Rocky</a></li>
+    <li><a href="#">Azealia Banks</a></li>
+    <li><a href="#">Bocelli</a></li>
+    <li><a href="#">Fever Ray</a></li>
+    <li><a href="#">Justice</a></li>
+    <li><a href="#">MGMT</a></li>
+    <li><a href="#">Florence + The Machine</a></li>
+    <li><a href="#">Placido Domingo</a></li>
+
+</ul>
+
+
+<script> function myFunction() {
+    var input, filter, ul, li, a, i;
+    input = document.getElementById("myInput");
+    filter = input.value.toLowerCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        if (a.innerHTML.toLowerCase().includes(filter) && filter !== "") {
+            li[i].style.display = "block";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
+
+
+<h1>Select your preferences</h1>
+
+<p> Genre </p>
+
+<form action="/action_page.php">
+    <input type="checkbox" name="Genre 1" value="Pop-Rock"> Pop-Rock <br>
+    <input type="checkbox" name="Genre 2" value="Electro"> Electro <br>
+    <input type="checkbox" name="Genre 3" value="Hip-Hop" checked> Hip-Hop <br>
+    <input type="checkbox" name="Genre 4" value="Classical" checked> Classical <br>
+    <input type="submit" value="Submit">
+</form>
+
+
+<p> Distance </p>
+
+<form action="/action_page.php">
+    <input type="checkbox" name="Distance 1" value="Short distance"> ≤ 2km <br>
+    <input type="checkbox" name="Distance 2" value="Medium distance"> ≤ 4 km <br>
+    <input type="checkbox" name="Distance 3" value="Long distance" checked> ≤ 6 km <br>
+    <input type="checkbox" name="Distance 4" value="No distance" checked> Doesn't matter<br>
+    <input type="submit" value="Submit">
+</form>
+
+<p> Date range </p>
+
+<fieldset>
+    <legend>Choose concert dates</legend>
+
+    <div>
+        <label for="start">From</label>
+        <input type="date" id="start" name="concert"
+               value="2019-01-22"
+               min="2019-01-01" max="2019-07-31"/>
+    </div>
+
+    <div>
+        <label for="end">To</label>
+        <input type="date" id="end" name="concert"
+               value="2019-01-23"
+               min="2019-01-01" max="2019-07-31"/ >
+        <div>
+            <input type="submit">
+        </div>
+    </div>
+
+</fieldset>
+
+
+<br>
+
+<p> Ticket price </p>
+
+<form action="/action_page.php">
+    <input type="checkbox" name="Price 1" value="Cheap"> ≤ 100 Kr <br>
+    <input type="checkbox" name="Price 2" value="Average"> ≤ 250 Kr <br>
+    <input type="checkbox" name="Price 3" value="Expensive" checked> ≤ 450 Kr <br>
+    <input type="checkbox" name="Price 4" value="No price" checked> Doesn't matter <br>
+    <input type="submit" value="Submit">
+</form>
+
+
+</body>
+</html>
+
+
+//SHOW A TEXT WHEN BOX IS CHECKED
+
+Checkbox: <input type="checkbox" id="myCheck" onclick="myFunction()">
+
+<p id="text" style="display:none">Checkbox is CHECKED!</p>
+
+<!--<script>
+    function myFunction() {
+// Get the checkbox
+        var checkBox = document.getElementById("myCheck");
+// Get the output text
+        var text = document.getElementById("text");
+// If the checkbox is checked, display the output text
+        if (checkBox.checked == true){
+            text.style.display = "block";
+        } else {
+            text.style.display = "none";
+        }
+    }
+    let data = [
+        {
+            artistName: 'Adele',
+            concertName:'Rolling in the deep',
+            ticketPrice: 450, ƒvenueName: 'Forum',
+            concertGenre: 'Pop-Rock',
+            concertTime: '19:00',
+            concertDate: 2019-01-25,
+        }
+        {
+            artistName: 'Asap Rocky',
+            concertName:'Long Live Asap',
+            ticketPrice: 420,
+            venueName: 'Forum',
+            concertGenre: 'Hip-Hop',
+            concertTime: '20:00',
+            concertDate: 2019-01-27,
+        }
+        {
+            artistName: 'Bocelli',
+            concertName:'Forever',
+            ticketPrice: 450,
+            venueName: 'Forum',
+            concertGenre: 'Classic',
+            concertTime: '19:00',
+            concertDate: 2019-01-28,
+        }
+        {
+            artistName: 'Fever Ray',
+            concertName:'When I grow up',
+            ticketPrice: 300,
+            venueName: 'Den Grå Hal',
+            concertGenre: 'Electro',
+            concertTime: '19:00',
+            concertDate: 2019-01-29,
+        }
+        {
+            artistName: 'Justice',
+            concertName:'Phantom',
+            ticketPrice: 270,
+            venueName: 'Den Grå Hal',
+            concertGenre: 'Electro',
+            concertTime: '20:00',
+            concertDate: 2019-01-29,
+        }
+        {
+            artistName: 'Azealia Banks',
+            concertName:'Fantasea',
+            ticketPrice: 290,
+            venueName: 'Den Grå Hal',
+            concertGenre: 'Hip-Hop',
+            concertTime: '20:00',
+            concertDate: 2019-01-30,
+        }
+        {
+            artistName: 'MGMT',
+            concertName:'Kids',
+            ticketPrice: 310,
+            venueName: 'Vega',
+            concertGenre: 'Pop-Rock',
+            concertTime: '21:00',
+            concertDate: 2019-02-05,
+        }
+        {
+            artistName: 'Florence + The Machine',
+            concertName:'High as Hope',
+            ticketPrice: 400,
+            venueName: 'Vega',
+            concertGenre: 'Pop-Rock',
+            concertTime: '20:00',
+            concertDate: 2019-02-07,
+        }
+        {
+            artistName: 'Placido Domingo',
+            concertName:'Fantasea',
+            ticketPrice: 420,
+            venueName: 'Vega',
+            concertGenre: 'Classic',
+            concertTime: '19:00',
+            concertDate: 2019-02-09,
+        }
+        let concert = data.filter(val => {
+            return val.concertGenre = 'Pop-Rock';
+        });
+    ]
+</script>-->
+
+<script src="classes.js"></script>
+<script src="Concerts.js"></script>
+<script src="filter.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css"/>
+
+
+
+
+
+
+
+</body>
+
+</html>
