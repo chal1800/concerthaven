@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ahoi! Welcome to Conerthaven</title>
+</head>
+<header>
+    <h1>Ahoi!Welcome to Concerthaven!</h1>
+</header>
+
+<p>Which music are you into?</p>
+
+<form>
+    <select id="genreSelect">
+        <option value="Pop-Rock">Pop-Rock</option>
+        <option value="Electro">Electro</option>
+        <option value="Hip-Hop">Hip-Hop</option>
+        <option value="Classic">Classic</option>
+    </select>
+</form>
+<p>What do you want to pay for your tickets?</p>
+
+<form>
+    <select id="priceSelect">
+        <option value=150><150kr.</option>
+        <option value=350><350kr.</option>
+        <option value=500><500kr.</option>
+        <option value=450>Doesn't matter.</option>
+    </select>
+</form>
+
+
+<br>
+<form action="/action_page.php">
+    When do you have time?:<br> <input type="date" name="concertDate">
+</form>
+
+<br>
+<button type="button" id="buttonClick">Show me my concerts</button>
+
+<p id="filter"></p>
+<script src="ConcertsChris.js"></script>
+
+
+</body>
+</html>
