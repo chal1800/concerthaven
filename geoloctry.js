@@ -140,3 +140,15 @@ function filter() {
     document.getElementById("demo").innerHTML = JSON.stringify(distances, null, 4);
     return (distances);
 }
+
+for (var i = 0; i < i; i++) {
+    if (distances[i] ===)
+        }
+
+//filtering distanceUser for the users input of his max. willingness to travel and return new, filtered array "distances"
+function filter() {
+    let price = distanceUser.filter(choice => choice.km < document.getElementById("distSelect").value);
+    console.log(distances);
+    document.getElementById("demo").innerHTML = JSON.stringify(distances, null, 4);
+    return (distances);
+}
