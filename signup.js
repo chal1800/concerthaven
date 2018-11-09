@@ -1,5 +1,5 @@
 //Sign up - Form validation
-//validateSignUp - this function is triggered when the user is clicking on the submit button
+//validateSignUp - this function is triggered when the user is clicking on the submit but
 
 function validateSignUp() {
 //reference to fields; set the input of the variables
@@ -72,79 +72,100 @@ function functionPushStorage() {
 //functions for validating Sign up -> called by validateSignUp()
 //function that checks whether input text is an alphabetic character or not
 //needs the parameters inputtext and the alertMsg
+//define restrictions as variables
+// Regex includes all letters a-z, upper and lower case, no restriction on length
+var alphaExp = /^[a-zA-Z]+$/;
+// Regex includes all letters a-z, upper and lower case, all numbers 0-9, no restriction on length
+var alphanumericExp = /^[0-9a-zA-Z]+$/;
+// Regex email: any letters possible characters: "-, ".", "+"; must include @ sign followed by possible letters a-z (upper and lower case) and numbers followed by ".", followed by possible letters a-z (upper and lower case), restricted length (min 2, max 4)
+var emailExp = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+
+//function that checks whether input text is an alphabetic character or not and displays alert message on wrong format
 function inputAlphabetfirstName(inputtext, alertMsg) {
-    //Regex includes all letters a-z, upper and lower case, no restriction on length
-    var alphaExp = /^[a-zA-Z]+$/;
-    //if function checks value of inputtext against the regex alphaExp
+    //checks value of inputtext against the variable regex alphaExp
     if (inputtext.value.match(alphaExp)) {
         return true;
-        //inputtext doesn't match alphaExp -> .innerText
     } else {
-        document.getElementById('p1').innerText = alertMsg;  //this segment displays the validation rule
+        //inputtext doesn't match alphaExp
+        //displays the validation rule
+        document.getElementById('p1').innerText = alertMsg;
         return false;
     }
 }
 
+//function that checks whether input text is an alphabetic character or not and displays alert message on wrong format
 function inputAlphabetSurName(inputtext, alertMsg) {
-    var alphaExp = /^[a-zA-Z]+$/;
+    //checks value of inputtext against the variable regex alphaExp
     if (inputtext.value.match(alphaExp)) {
         return true;
     } else {
-        document.getElementById('p2').innerText = alertMsg;  //this segment displays the validation rule
+        //inputtext doesn't match alphaExp
+        //displays the validation rule
+        document.getElementById('p2').innerText = alertMsg;
         return false;
     }
 }
 
-//function that checks whether input text includes alphabetic and numeric characters.
+//function that checks whether input text includes alphabetic and numeric characters and displays alert message on wrong format
 function textAlphanumericUserName(inputtext, alertMsg) {
-    var alphanumericExp = /^[0-9a-zA-Z]+$/;
+    //checks value of inputtext against the variable regex alphanumericExp
     if (inputtext.value.match(alphanumericExp)) {
         return true;
     } else {
-        document.getElementById('p3').innerText = alertMsg;  //this segment displays the validation rule
+        //inputtext doesn't match alphanumericExp
+        //displays the validation rule
+        document.getElementById('p3').innerText = alertMsg;
         return false;
     }
 }
 
-// Function that checks whether an user entered valid email address or not and displays alert message on wrong email address format.
-
+// Function that checks whether an user entered valid email address or not and displays alert message on wrong email address format
 function emailValidation(inputtext, alertMsg) {
-    var emailExp = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
     if (inputtext.value.match(emailExp)) {
         return true;
     } else {
-        document.getElementById('p4').innerText = alertMsg;  //this segment displays the validation rule
+        //inputtext doesn't match alphanumericExp
+        //displays the validation rule
+        document.getElementById('p4').innerText = alertMsg;
         return false;
     }
 }
 
-//function that checks whether input text includes alphabetic and numeric characters.
+//function that checks whether input text includes alphabetic and numeric characters and displays alert message on wrong format
 function textAlphanumericPassword(inputtext, alertMsg) {
-    var alphanumericExp = /^[0-9a-zA-Z]+$/;
     if (inputtext.value.match(alphanumericExp)) {
         return true;
     } else {
+        //inputtext doesn't match alphanumericExp
+        //displays the validation rule
         document.getElementById('p3').innerText = alertMsg;  //this segment displays the validation rule
         return false;
     }
 }
-// Function that checks whether the input characters are restricted according to defined by user.
+
+// Function that checks whether the input characters are restricted and displays alert message on wrong format
 function lengthDefineFirstName(inputtext, min, max) {
-    var uInput = inputtext.value;
-    if (uInput.length >= min && uInput.length <= max) {
+    //variable takes value of input field
+    var userInput = inputtext.value;
+    //checks if the length of the input field matches the min and max restrictions
+    if (userInput.length >= min && userInput.length <= max) {
         return true;
     } else {
-        document.getElementById('p1').innerText = "* Please enter between " + min + " and " + max + " characters *";  //this segment displays the validation rule
+        document.getElementById('p1').innerText = "* Please enter between " + min + " and " + max + " characters *";
         return false;
     }
 }
 
 function lengthDefineSurName(inputtext, min, max) {
-    var uInput = inputtext.value;
-    if (uInput.length >= min && uInput.length <= max) {
+//variable takes value of input field
+    var userInput = inputtext.value;
+    //checks if the length of the input field matches the min and max restrictions
+    if (userInput.length >= min && userInput.length <= max) {
         return true;
     } else {
-        document.getElementById('p2').innerText = "* Please enter between " + min + " and " + max + " characters *";  //this segment displays the validation rule
+        //inputtext doesn't match the length restrictions
+        //displays the validation rule
+        document.getElementById('p2').innerText = "* Please enter between " + min + " and " + max + " characters *";
         return false;
     }
 }
@@ -154,14 +175,29 @@ function lengthDefinePassword(inputtext, min, max) {
     if (uInput.length >= min && uInput.length <= max) {
         return true;
     } else {
+        //inputtext doesn't match the length restrictions
+        //displays the validation rule
         document.getElementById('p5').innerText = "* Please enter between " + min + " and " + max + " characters *";  //this segment displays the validation rule
         return false;
     }
 }
 
-//Event Listener
+//Event Listener - calls the validateSignUp() function as soon as the SIgnup button is clicked
+//makes sure to call the function when the whole page is loaded
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("signupbtn").addEventListener("click", function () {
         validateSignUp();
     });
 });
+
+/*
+functionUserExists() {
+for (var i = 0; i < users.length; i++) {
+    // users[i].username/.password to check that the same user doesn't exist in local storage
+    if (userName.value !=== users[i].userName && password.value !=== users[i].password) {
+        //if username and password match set tempIndex to it's actual index
+        tempIndex = i;
+
+    }
+}
+*/
