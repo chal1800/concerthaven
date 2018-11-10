@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title>Ahoi! Welcome to Conerthaven</title>
 </head>
 Where are you?
 <body>
@@ -21,12 +21,30 @@ Where are you?
         <option value=5>less than 5 km</option>
     </select>
 </form>
-<p> Show me your location</p>
-
-<button type="button" id="buttonClick">Show selected</button>
-
 <p id="demo"></p>
+<p>Which music are you into?</p>
 
-<script src="geoloc.js"></script>
+<form>
+    <select id="genreSelect">
+        <option value="Pop-Rock">Pop-Rock</option>
+        <option value="Electro">Electro</option>
+        <option value="Hip-Hop">Hip-Hop</option>
+        <option value="Classic">Classic</option>
+    </select>
+</form>
+<p>What do you want to pay for your tickets?</p>
+<form>
+    <select id="priceSelect">
+        <option value=150><150kr.</option>
+        <option value=350><350kr.</option>
+        <option value=500><500kr.</option>
+        <option value=450>Doesn't matter.</option>
+    </select>
+</form>
+<br>
+<button type="button" id="buttonClick">Show me my concerts</button>
+
+<p id="filter"></p>
+<script src="geoloctry.js"></script>
 </body>
 </html>
