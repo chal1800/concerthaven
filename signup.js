@@ -46,6 +46,7 @@ function validateSignUp() {
 //each input field has different restrictions; the if function calls the corresponding function
 //if function for first field is fulfilled -> triggers next if function for next field
 //testing: different use cases
+
     if (inputAlphabet(firstName, "* For your first name please use alphabets only *", "p1") && lengthRestriction(firstName, 3, 10, "p1")) {
         if (inputAlphabet(surName, "* For your surname please use alphabets only *", "p2") && lengthRestriction(surName, 6, 10, "p2")) {
             if (inputAlphanumeric(userName, "* For your username please use alphabets and numbers only *", "p3")) {
@@ -64,6 +65,7 @@ function validateSignUp() {
         }
     return false;
 }
+
 
 //Sign up - storing new user data
 //create an array called users
@@ -86,6 +88,7 @@ function functionPushStorage() {
 //why do I need the windwow.location? -> I don't want to redirect after I called this function -> I'm doing this in the singup function
     window.location = "index.html";
 }
+
 
 //functions for validating Sign up -> called by validateSignUp()
 //function that checks whether input text is an alphabetic character or not
