@@ -1,10 +1,26 @@
-//Get coordinates from user input and create an object for the user's location
-userLocation = {};
+//Get coordinates from user input and create an object for the user's location which will be filled with the user's input through "getCoords"
+class UserLoc {
+    constructor(name, lon, lat) {
+        this.name = name;
+        this.lon = lon;
+        this.lat = lat
+    }
+}
 
-//Objects for the distances between user location and the specific venues for all venues//
-var distanceVega = {};
-var distanceDenGraHal = {};
-var distanceForum = {};
+let userLocation = new UserLoc();
+
+class distanceVenue {
+    constructor(name, km) {
+        this.name = "name";
+        this.km = km
+    }
+}
+
+
+//Objects for the distances between user location and the specific venues for all venues
+let distance1 = new distanceVenue("Vega", "");
+let distance2 = new distanceVenue("Den Gra Hal", "");
+let distance3 = new distanceVenue("Forum", "");
 
 //Initiate array "venues" to store variables for each concert hall
 venues = [];
@@ -21,12 +37,10 @@ class Venue {
     }
 }
 
-//Create variables for the specific venues
-var venue1 = new Venue("Vega", 55.668104, 12.544605);
-
-var venue2 = new Venue("Den Gra Hal", 55.674656, 12.600719);
-
-var venue3 = new Venue("Forum", 55.681285, 12.553624);
+//Create objects for the 3 specific venues, incl. their name,longitude, latitude
+const venue1 = new Venue("Vega", 55.668104, 12.544605);
+const venue2 = new Venue("Den Gra Hal", 55.674656, 12.600719);
+const venue3 = new Venue("Forum", 55.681285, 12.553624);
 venues.push(venue1, venue2, venue3);
 
 //Initiate class for neighborhood
@@ -38,28 +52,29 @@ class Bro {
     }
 }
 
-//Define variables for the specific neighborhoods
-bros = []
-var bro1 = new Bro("Frederiksberg", 55.676936, 12.506579);
-var bro2 = new Bro("Nørrebro", 55.699031, 12.556984);
-var bro3 = new Bro("Vesterbro", 55.664409, 12.541514);
+//Define constants for the specific neighborhoods and assign them name, lon, lat
+const bro1 = new Bro("Frederiksberg", 55.676936, 12.506579);
+const bro2 = new Bro("Nørrebro", 55.699031, 12.556984);
+const bro3 = new Bro("Vesterbro", 55.664409, 12.541514);
 
-//Push them into array with all neighborhoods
+//Push them into array with all neighborhoods "bros"
+bros = [];
 bros.push(bro1, bro2, bro3);
-//Match user location name with coordinates for the user location when the user picks location from the list and clicks on button//
+
+//Match user location name with coordinates for the user location when the user picks location from the list and clicks on button
 function getCoords() {
-    var userL = document.getElementById("locSelect").value;
-    if (userL === bro1.name) {
-        userLocation.uLong = bro1.lat;
-        userLocation.uLat = bro1.lon;
-    } else if (userL === bro2.name) {
-        userLocation.uLong = bro2.lat;
-        userLocation.uLat = bro2.lon;
-    } else if (userL === bro3.name) {
-        userLocation.uLong = bro3.lat;
-        userLocation.uLat = bro3.lon;
+    userLocation.name = document.getElementById("locSelect").value;
+    if (userLocation.name === bro1.name) {
+        userLocation.lon = bro1.lat;
+        userLocation.lat = bro1.lon;
+    } else if (userLocation.name === bro2.name) {
+        userLocation.lon = bro2.lat;
+        userLocation.lat = bro2.lon;
+    } else if (userLocation.name === bro3.name) {
+        userLocation.lon = bro3.lat;
+        userLocation.lat = bro3.lon;
     }
-    ;
+
     /*if ((userL === "Frederiksberg")) {
         userLocation.uLong = 55.676936;
         userLocation.uLat = 12.506579;
@@ -70,32 +85,30 @@ function getCoords() {
         userLocation.uLong = 55.664409;
         userLocation.uLat = 12.541514;
     } */
-    document.getElementById("demo").innerHTML = userL;
-
 
 //distance function applied on user location and all venues; result is object with name of location and distance of the user//
 
-    var distanceVega = {
+    distance1 = {
         name: "Vega",
-        km: distance(userLocation.uLong, userLocation.uLat, venues[0].lat, venues[0].lon)
+        km: distance(userLocation.lon, userLocation.lat, venues[0].lat, venues[0].lon)
     };
     //result pushed into distanceUser array//
-    distanceUser.push(distanceVega);
-    console.log("Vega", distanceVega.km.toFixed(2));
+    distanceUser.push(distance1);
+    console.log("Vega", distance1.km.toFixed(2));
 
-    var distanceDenGraHal = {
+    distance2 = {
         name: "Den Gra Hal",
-        km: distance(userLocation.uLong, userLocation.uLat, venues[1].lat, venues[1].lon)
+        km: distance(userLocation.lon, userLocation.lat, venues[1].lat, venues[1].lon)
     };
-    distanceUser.push(distanceDenGraHal);
-    console.log("Den Gra Hal", distanceDenGraHal.km.toFixed(2));
+    distanceUser.push(distance2);
+    console.log("Den Gra Hal", distance2.km.toFixed(2));
 
-    var distanceForum = {
+    distance3 = {
         name: "Forum",
-        km: distance(userLocation.uLong, userLocation.uLat, venues[2].lat, venues[2].lon)
+        km: distance(userLocation.lon, userLocation.lat, venues[2].lat, venues[2].lon)
     };
-    distanceUser.push(distanceForum);
-    console.log("Forum", distanceForum.km.toFixed(2));
+    distanceUser.push(distance3);
+    console.log("Forum", distance3.km.toFixed(2));
 
 }
 
@@ -106,18 +119,16 @@ function clearArray() {
 }
 
 
-
-
 //Transform coordinate distances into distance in km//
 
 function distance(lat1, lon1, lat2, lon2) {
-    var radlat1 = Math.PI * lat1 / 180;
-    var radlat2 = Math.PI * lat2 / 180;
-    var radlon1 = Math.PI * lon1 / 180;
-    var radlon2 = Math.PI * lon2 / 180;
-    var theta = lon1 - lon2;
-    var radtheta = Math.PI * theta / 180;
-    var dist = Math.sin(radlat1) * Math.sin(radlat2) + Math.cos(radlat1) * Math.cos(radlat2) * Math.cos(radtheta);
+    let radLat1 = Math.PI * lat1 / 180;
+    let radLat2 = Math.PI * lat2 / 180;
+    /*var radlon1 = Math.PI * lon1 / 180;*/
+    /* var radlon2 = Math.PI * lon2 / 180;*/
+    let theta = lon1 - lon2;
+    let radTheta = Math.PI * theta / 180;
+    let dist = Math.sin(radLat1) * Math.sin(radLat2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.cos(radTheta);
     dist = Math.acos(dist);
     dist = dist * 180 / Math.PI;
     dist = dist * 60 * 1.1515 * 1.609344;
@@ -136,19 +147,26 @@ document.getElementById("buttonClick").addEventListener("click", function () {
 document.getElementById("nextClick").addEventListener("click", function () {
     window.location = "concert-filters.html"
 });
-var distances = [];
-var filteredVenues = [];
+
+//Initializing array for distances which contains all names and distances (distance1,2 & 3 objects
+let distances = [];
+
+//Initializing array for the names of the filtered venues
+let filteredVenues = [];
+
 //filtering distanceUser for the users input of his max. willingness to travel and return new, filtered array "distances"
 function filter() {
     distances = distanceUser.filter(choice => choice.km < document.getElementById("distSelect").value);
     console.log(distances);
+    //Print filtered Venues to the Screen
     document.getElementById("demo").innerHTML = JSON.stringify(distances, null, 4);
+    //Create array with only the names of the filtered Venues
     filteredVenues = distances.map(names => names.name);
     console.log(filteredVenues);
+    //push filtered Venue names into the Local Storage
     localStorage.setItem("Venues", JSON.stringify(filteredVenues));
     return distances
 }
-
 
 
 
