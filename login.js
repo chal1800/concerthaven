@@ -25,7 +25,7 @@ function authUser() {
             //saves the user in local storage
             localStorage.setItem("currentUser", userString);
             //open main filter page on same tab
-            window.location = "geo.html";
+            window.location = "geoloctry.html";
         }
     }
     //this will only happen when the program checked all the users and tempIndex was never set to i but still set to initial -1
@@ -33,8 +33,11 @@ function authUser() {
         alert("Your password or username is incorrect. Please try again!");
     }
 };
+
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("loginbtn").addEventListener("click", function () {
         authUser();
     });
 });
+
+
