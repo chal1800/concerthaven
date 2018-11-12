@@ -63,15 +63,12 @@ function getCoords() {
     /*if ((userL === "Frederiksberg")) {
         userLocation.uLong = 55.676936;
         userLocation.uLat = 12.506579;
-
     } else if ((userL === "Nørrebro")) {
         userLocation.uLong = 55.699031;
         userLocation.uLat = 12.556984;
-
     } else if ((userL === "Vesterbro")) {
         userLocation.uLong = 55.664409;
         userLocation.uLat = 12.541514;
-
     } */
     document.getElementById("demo").innerHTML = userL;
 
@@ -133,16 +130,27 @@ function distance(lat1, lon1, lat2, lon2) {
 document.getElementById("buttonClick").addEventListener("click", function () {
     getCoords();
     filter();
-    cleararray();
+    clearArray();
 });
 
+document.getElementById("nextClick").addEventListener("click", function () {
+    window.location = "trytry.html"
+});
+var distances = [];
+var filteredVenues = [];
 //filtering distanceUser for the users input of his max. willingness to travel and return new, filtered array "distances"
 function filter() {
-    let distances = distanceUser.filter(choice => choice.km < document.getElementById("distSelect").value);
+    distances = distanceUser.filter(choice => choice.km < document.getElementById("distSelect").value);
     console.log(distances);
     document.getElementById("demo").innerHTML = JSON.stringify(distances, null, 4);
-    return (distances);
+    filteredVenues = distances.map(names => names.name);
+    console.log(filteredVenues);
+    localStorage.setItem("Venues", JSON.stringify(filteredVenues));
+    return distances
 }
+
+
+
 
 
 

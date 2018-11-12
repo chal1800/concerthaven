@@ -137,6 +137,7 @@ function filter() {
     return distances
 }
 
+
 /*var filteredVenues = getVenueName (distances, name);
 console.log (filteredVenues);
 */
@@ -148,7 +149,6 @@ function getVenueName(distances, name) {
     return Venues;
 }
 */
-
 
 var concerts = [];
 var filteredConcerts = [];
@@ -193,8 +193,9 @@ function nameFilter() {
     console.log(filteredVenueConcerts);
 }
 
+var filteredConcerts = [];
 function concertFilter() {
-    let filteredConcerts = filteredVenueConcerts.filter(genreChoice => genreChoice.concertGenre === document.getElementById("genreSelect").value &&
+    filteredConcerts = filteredVenueConcerts.filter(genreChoice => genreChoice.concertGenre === document.getElementById("genreSelect").value &&
         genreChoice.ticketPrice <= document.getElementById("priceSelect").value && genreChoice.concertDate >= document.getElementById("start").value && genreChoice.concertDate <= document.getElementById("end").value);
     console.log(filteredConcerts);
     document.getElementById("filter").innerHTML = JSON.stringify(filteredConcerts, null, 4);
@@ -209,3 +210,5 @@ document.getElementById("buttonClick").addEventListener("click", function () {
     nameFilter();
     concertFilter();
 });
+
+
