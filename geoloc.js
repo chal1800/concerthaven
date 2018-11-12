@@ -134,7 +134,7 @@ document.getElementById("buttonClick").addEventListener("click", function () {
 });
 
 document.getElementById("nextClick").addEventListener("click", function () {
-    window.location = "trytry.html"
+    window.location = "concert-filters.html"
 });
 var distances = [];
 var filteredVenues = [];
