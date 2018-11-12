@@ -105,6 +105,7 @@ var emailExp = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
 function inputAlphabet(inputtext, alertMsg, element) {
     //checks value of inputtext against the variable regex alphaExp
     if (inputtext.value.match(alphaExp)) {
+        document.getElementById(element).innerHTML = "";
         return true;
     } else {
         //inputtext doesn't match alphaExp
@@ -133,6 +134,7 @@ function inputAlphabetSurName(inputtext, alertMsg) {
 function inputAlphanumeric(inputtext, alertMsg, element) {
     //checks value of inputtext against the variable regex alphanumericExp
     if (inputtext.value.match(alphanumericExp)) {
+        document.getElementById(element).innerHTML = "";
         return true;
     } else {
         //inputtext doesn't match alphanumericExp
@@ -145,6 +147,7 @@ function inputAlphanumeric(inputtext, alertMsg, element) {
 // Function that checks whether an user entered valid email address or not and displays alert message on wrong email address format
 function emailValidation(inputtext, alertMsg, element) {
     if (inputtext.value.match(emailExp)) {
+        document.getElementById(element).innerHTML = "";
         return true;
     } else {
         //inputtext doesn't match alphanumericExp
@@ -174,6 +177,7 @@ function lengthRestriction(inputtext, min, max, element) {
     var userInput = inputtext.value;
     //checks if the length of the input field matches the min and max restrictions
     if (userInput.length >= min && userInput.length <= max) {
+        document.getElementById(element).innerHTML = "";
         return true;
     } else {
         document.getElementById(element).innerHTML = "* Please enter between " + min + " and " + max + " characters *";
