@@ -1,19 +1,6 @@
 var concerts = [];
 var filteredConcerts = [];
 
-//Create concerts
-class Concert {
-    constructor(artistName, concertName, ticketPrice, venueName, concertGenre, ticketCount, concertTime, concertDate,) {
-        this.artistName = artistName;
-        this.concertName = concertName;
-        this.ticketPrice = ticketPrice;
-        this.venueName = venueName;
-        this.concertGenre = concertGenre;
-        this.ticketCount = ticketCount;
-        this.concertTime = concertTime;
-        this.concertDate = concertDate;
-    }
-}
 
 var concert1 = new Concert('Adele', 'Rolling in the deep', 450, 'Forum', 'Pop-Rock', 5, '19:00', ("2019-1-25"));
 var concert2 = new Concert('Asap Rocky', 'Long Live Asap', 420, 'Forum', 'Hip-Hop', 5, '20:00', ("2019-1-27"));
@@ -38,21 +25,40 @@ function locationFilter() {
 var filteredVenues = JSON.parse(localStorage.getItem("Venues"));
 var filteredVenueConcerts = [];
 
+
 function nameFilter() {
     filteredVenueConcerts = concerts.filter(venueNameChoice => venueNameChoice.venueName === filteredVenues[0] || venueNameChoice.venueName === filteredVenues[1] || venueNameChoice.venueName === filteredVenues[2]);
     console.log(filteredVenueConcerts);
 }
 
+function dateRequirement() {
+    var startDate = document.getElementById("start").value;
+    var endDate = document.getElementById("end").value;
+    var valiDate = /^\d{4}-\d{2}-\d{2}$/;
+    if (startDate.match(valiDate) && endDate.match(valiDate)) {
+        concertFilter()
+    } else {
+        alert("Type in your dates")
+    }
+};
+
 function concertFilter() {
-    let filteredConcerts = filteredVenueConcerts.filter(genreChoice => genreChoice.concertGenre === document.getElementById("genreSelect").value &&
+    filteredConcerts = filteredVenueConcerts.filter(genreChoice => genreChoice.concertGenre === document.getElementById("genreSelect").value &&
         genreChoice.ticketPrice <= document.getElementById("priceSelect").value && genreChoice.concertDate >= document.getElementById("start").value && genreChoice.concertDate <= document.getElementById("end").value);
     console.log(filteredConcerts);
     document.getElementById("filter").innerHTML = JSON.stringify(filteredConcerts, null, 4);
     return (filteredConcerts);
 }
 
+function noConcert() {
+    if (filteredConcerts.length === 0) {
+        alert("Sorry, we found no concerts for you");
+    }
+}
+
 //Apply "getCoords", "filter" & "clearArray" functions on users button click after dropdown choice //
 document.getElementById("concertClick").addEventListener("click", function () {
     nameFilter();
-    concertFilter();
+    dateRequirement();
+    noConcert();
 });

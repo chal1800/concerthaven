@@ -1,4 +1,44 @@
+//GEO-LOCATION
+
+//Class UserLoc to match user's location input with user location properties
+class UserLoc {
+    constructor(name, lon, lat) {
+        this.name = name;
+        this.lon = lon;
+        this.lat = lat
+    }
+}
+
+//Class for neighborhood to match with user's location
+class Bro {
+    constructor(name, lat, lon) {
+        this.name = name;
+        this.lat = lat;
+        this.lon = lon;
+    }
+}
+
+//Class Venue to define multiple venues and their location properties
+class Venue {
+    constructor(name, lat, lon) {
+        this.name = name;
+        this.lat = lat;
+        this.lon = lon
+    }
+}
+
+//Class DistanceVenue to create objects for each venue and their distance to user's location in km
+class DistanceVenue {
+    constructor(name, km) {
+        this.name = "name";
+        this.km = km
+    }
+}
+
+//SIGN-UP & LOG-IN
+
 // Create class User
+
 class User {
     constructor(firstName, surName, userName, eMail, password) {
         this.firstName = firstName;
@@ -9,26 +49,10 @@ class User {
     }
 }
 
-function hashPassword(password) {
-    var a = 1, c = 0, h, o;
-    if (password) {
-        a = 0;
-        /*jshint plusplus:false bitwise:false*/
-        for (h = password.length - 1; h >= 0; h--) {
-            o = password.charCodeAt(h);
-            a = (a << 6 & 268435455) + o + (o << 14);
-            c = a & 266338304;
-            a = c !== 0 ? a ^ c >> 21 : a;
-        }
-    } else {
-        // If the password is not valid, we'll throw and error we're able to catch
-        throw new Error("The password supplied is not valid");
-    }
-    return String(a);
-}
 
+//Create concerts
 class Concert {
-    constructor(artistName, concertName, ticketPrice, venueName, concertGenre, concertDate, ticketCount, concertTime) {
+    constructor(artistName, concertName, ticketPrice, venueName, concertGenre, ticketCount, concertTime, concertDate,) {
         this.artistName = artistName;
         this.concertName = concertName;
         this.ticketPrice = ticketPrice;
@@ -37,21 +61,5 @@ class Concert {
         this.ticketCount = ticketCount;
         this.concertTime = concertTime;
         this.concertDate = concertDate;
-    }
-}
-
-class UserLocation {
-    constructor(userName, longitude, latitude) {
-        this.userName = userName;
-        this.longtitude = longitude;
-        this.latitude = latitude;
-    }
-}
-
-class Venue {
-    constructor(venueName, longitude, latitude) {
-        this.venueName = venueName;
-        this.longitude = longitude;
-        this.latitude = latitude;
     }
 }

@@ -1,26 +1,20 @@
-//Get coordinates from user input and create an object for the user's location which will be filled with the user's input through "getCoords"
-class UserLoc {
-    constructor(name, lon, lat) {
-        this.name = name;
-        this.lon = lon;
-        this.lat = lat
-    }
-}
-
+//Create an object for the user's location which will be filled with the user's input through "getCoords"
 let userLocation = new UserLoc();
 
-class distanceVenue {
-    constructor(name, km) {
-        this.name = "name";
-        this.km = km
-    }
-}
-
-
 //Objects for the distances between user location and the specific venues for all venues
-let distance1 = new distanceVenue("Vega", "");
-let distance2 = new distanceVenue("Den Gra Hal", "");
-let distance3 = new distanceVenue("Forum", "");
+let distance1 = new DistanceVenue();
+Object.defineProperty(distance1, "name", {
+    value: "Vega"
+});
+let distance2 = new DistanceVenue();
+Object.defineProperty(distance2, "name", {
+    value: "Den Gra Hal"
+});
+let distance3 = new DistanceVenue();
+Object.defineProperty(distance3, "name", {
+    value: "Forum"
+});
+
 
 //Initiate array "venues" to store variables for each concert hall
 venues = [];
@@ -28,29 +22,12 @@ venues = [];
 //Initiate an array for the distance from user's position to the venue's position in km
 distanceUser = [];
 
-//Initiate class "Venue" to assign variables for specific concert venues incl. name, latitude, longitude
-class Venue {
-    constructor(name, lat, lon) {
-        this.name = name;
-        this.lat = lat;
-        this.lon = lon
-    }
-}
-
 //Create objects for the 3 specific venues, incl. their name,longitude, latitude
 const venue1 = new Venue("Vega", 55.668104, 12.544605);
 const venue2 = new Venue("Den Gra Hal", 55.674656, 12.600719);
 const venue3 = new Venue("Forum", 55.681285, 12.553624);
 venues.push(venue1, venue2, venue3);
 
-//Initiate class for neighborhood
-class Bro {
-    constructor(name, lat, lon) {
-        this.name = name;
-        this.lat = lat;
-        this.lon = lon;
-    }
-}
 
 //Define constants for the specific neighborhoods and assign them name, lon, lat
 const bro1 = new Bro("Frederiksberg", 55.676936, 12.506579);
@@ -89,7 +66,7 @@ function getCoords() {
 //distance function applied on user location and all venues; result is object with name of location and distance of the user//
 
     distance1 = {
-        name: "Vega",
+        name: distance1.name,
         km: distance(userLocation.lon, userLocation.lat, venues[0].lat, venues[0].lon)
     };
     //result pushed into distanceUser array//
@@ -97,14 +74,14 @@ function getCoords() {
     console.log("Vega", distance1.km.toFixed(2));
 
     distance2 = {
-        name: "Den Gra Hal",
+        name: distance2.name,
         km: distance(userLocation.lon, userLocation.lat, venues[1].lat, venues[1].lon)
     };
     distanceUser.push(distance2);
     console.log("Den Gra Hal", distance2.km.toFixed(2));
 
     distance3 = {
-        name: "Forum",
+        name: distance3.name,
         km: distance(userLocation.lon, userLocation.lat, venues[2].lat, venues[2].lon)
     };
     distanceUser.push(distance3);
