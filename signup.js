@@ -13,13 +13,9 @@ function validateSignUp() {
 
 //check for empty fields - Loop through inputFields array
 //if one field is empty, this function alerts a message, and returns false, to prevent the form from being submitted
-//why did I put console.log? -> don't really need that?
-
-    for (var i = 0; i < 4; i++) {
+    for (var i = 0; i < inputFields.length; i++) {
         if (inputFields[i] === "") {
-            console.log(inputFields[i]);
             alert("Please fill in all the fields");
-            console.log(inputFields[i]);
             return false;
         }
     }
@@ -75,18 +71,17 @@ var users = JSON.parse(localStorage.getItem("users"));
 
 // pushing new user into existing array users and storing it using localStorage
 function functionPushStorage() {
-    firstName = document.getElementById("firstName").value;
-    surName = document.getElementById("surName").value;
-    userName = document.getElementById("userName").value;
-    eMail = document.getElementById("email").value;
-    password = document.getElementById("password").value;
+    /*   firstName = document.getElementById("firstName").value;
+       surName = document.getElementById("surName").value;
+       userName = document.getElementById("userName").value;
+       eMail = document.getElementById("email").value;
+       password = document.getElementById("password").value;
+       users.push(new User(firstName, surName, userName, eMail, password));*/
+    let pushUser = new User(document.getElementById("firstName").value, document.getElementById("surName").value, document.getElementById("userName").value, document.getElementById("email").value, document.getElementById("password").value);
 //push new user data in array users
-    users.push(new User(firstName, surName, userName, eMail, password));
-    console.log(users);
+    users.push(pushUser);
 //stringify array users then store array in local storage
-    localStorage.setItem('users', JSON.stringify(users));
-//why do I need the windwow.location? -> I don't want to redirect after I called this function -> I'm doing this in the singup function
-    window.location = "index.html";
+    localStorage.setItem("users", JSON.stringify(users));
 }
 
 
