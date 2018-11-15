@@ -1,7 +1,7 @@
 //Create an object for the user's location which will be filled with the user's input through "getCoords"
 let userLocation = new UserLoc();
 
-//Objects for the distances between user location and the specific venues for all venues
+//Objects for the distances between user location and the specific venues for all venues; set venue
 let distance1 = new DistanceVenue();
 Object.defineProperty(distance1, "name", {
     value: "Vega"
@@ -15,12 +15,11 @@ Object.defineProperty(distance3, "name", {
     value: "Forum"
 });
 
+//Initiate an array for the distance from user's position to the venue's position in km
+let distanceUser = [];
 
 //Initiate array "venues" to store variables for each concert hall
-venues = [];
-
-//Initiate an array for the distance from user's position to the venue's position in km
-distanceUser = [];
+let venues = [];
 
 //Create objects for the 3 specific venues, incl. their name,longitude, latitude
 const venue1 = new Venue("Vega", 55.668104, 12.544605);
@@ -28,6 +27,8 @@ const venue2 = new Venue("Den Gra Hal", 55.674656, 12.600719);
 const venue3 = new Venue("Forum", 55.681285, 12.553624);
 venues.push(venue1, venue2, venue3);
 
+//Initiate array "venues" to store variables for each neighborhood
+let bros = [];
 
 //Define constants for the specific neighborhoods and assign them name, lon, lat
 const bro1 = new Bro("Frederiksberg", 55.676936, 12.506579);
@@ -35,7 +36,6 @@ const bro2 = new Bro("Nørrebro", 55.699031, 12.556984);
 const bro3 = new Bro("Vesterbro", 55.664409, 12.541514);
 
 //Push them into array with all neighborhoods "bros"
-bros = [];
 bros.push(bro1, bro2, bro3);
 
 //Match user location name with coordinates for the user location when the user picks location from the list and clicks on button
@@ -63,7 +63,25 @@ function getCoords() {
         userLocation.uLat = 12.541514;
     } */
 
-//distance function applied on user location and all venues; result is object with name of location and distance of the user//
+
+    //Transform coordinate distances into distance in km//
+
+    function distance(lat1, lon1, lat2, lon2) {
+        let radLat1 = Math.PI * lat1 / 180;
+        let radLat2 = Math.PI * lat2 / 180;
+        /*var radlon1 = Math.PI * lon1 / 180;*/
+        /* var radlon2 = Math.PI * lon2 / 180;*/
+        let theta = lon1 - lon2;
+        let radTheta = Math.PI * theta / 180;
+        let dist = Math.sin(radLat1) * Math.sin(radLat2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.cos(radTheta);
+        dist = Math.acos(dist);
+        dist = dist * 180 / Math.PI;
+        dist = dist * 60 * 1.1515 * 1.609344;
+
+        return dist;
+    }
+
+//distance function applied on user location and all venues; result is object with name of location and distance of the user
 
     distance1 = {
         name: distance1.name,
@@ -90,28 +108,11 @@ function getCoords() {
 }
 
 
-//clear existing array values when new location is selected to have a unique array of distances per location when the user presses the button//
+//clear existing array values when new location is selected to have a unique array of distances per location when the user presses the button
 function clearArray() {
     distanceUser.length = 0;
 }
 
-
-//Transform coordinate distances into distance in km//
-
-function distance(lat1, lon1, lat2, lon2) {
-    let radLat1 = Math.PI * lat1 / 180;
-    let radLat2 = Math.PI * lat2 / 180;
-    /*var radlon1 = Math.PI * lon1 / 180;*/
-    /* var radlon2 = Math.PI * lon2 / 180;*/
-    let theta = lon1 - lon2;
-    let radTheta = Math.PI * theta / 180;
-    let dist = Math.sin(radLat1) * Math.sin(radLat2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.cos(radTheta);
-    dist = Math.acos(dist);
-    dist = dist * 180 / Math.PI;
-    dist = dist * 60 * 1.1515 * 1.609344;
-
-    return dist;
-}
 
 
 //Apply "getCoords", "filter" & "clearArray" functions on users button click after dropdown choice //
@@ -121,11 +122,7 @@ document.getElementById("buttonClick").addEventListener("click", function () {
     clearArray();
 });
 
-document.getElementById("nextClick").addEventListener("click", function () {
-    window.location = "concert-filters.html"
-});
-
-//Initializing array for distances which contains all names and distances (distance1,2 & 3 objects
+//Initializing array for distances which contains all names and distances (distance1,2 & 3 objects)
 let distances = [];
 
 //Initializing array for the names of the filtered venues
@@ -145,7 +142,10 @@ function filter() {
     return distances
 }
 
-
+//Go to the next page (filters) when done with the location filtering
+document.getElementById("nextClick").addEventListener("click", function () {
+    window.location = "concert-filters.html"
+});
 
 
 
