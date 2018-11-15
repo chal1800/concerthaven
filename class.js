@@ -1,4 +1,18 @@
-//GEO-LOCATION
+//1. & 2. SIGN-UP & LOG-IN
+
+// Create class User
+class User {
+    constructor(firstName, surName, userName, eMail, password) {
+        this.firstName = firstName;
+        this.surName = surName;
+        this.userName = userName;
+        this.eMail = eMail;
+        this.password = password;
+    }
+}
+
+
+//3. GEO-LOCATION
 
 //Class UserLoc to match user's location input with user location properties
 class UserLoc {
@@ -35,7 +49,7 @@ class DistanceVenue {
     }
 }
 
-//CONCERT FILTER
+//4. CONCERT FILTER
 
 //Create concerts
 class Concert {
@@ -50,19 +64,5 @@ class Concert {
         this.concertDate = concertDate;
     }
 }
-
-//SIGN-UP & LOG-IN
-
-// Create class User
-class User {
-    constructor(firstName, surName, userName, eMail, password) {
-        this.firstName = firstName;
-        this.surName = surName;
-        this.userName = userName;
-        this.eMail = eMail;
-        this.password = password;
-    }
-}
-
 
 
