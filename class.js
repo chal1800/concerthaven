@@ -35,20 +35,7 @@ class DistanceVenue {
     }
 }
 
-//SIGN-UP & LOG-IN
-
-// Create class User
-
-class User {
-    constructor(firstName, surName, userName, eMail, password) {
-        this.firstName = firstName;
-        this.surName = surName;
-        this.userName = userName;
-        this.eMail = eMail;
-        this.password = password;
-    }
-}
-
+//CONCERT FILTER
 
 //Create concerts
 class Concert {
@@ -63,3 +50,19 @@ class Concert {
         this.concertDate = concertDate;
     }
 }
+
+//SIGN-UP & LOG-IN
+
+// Create class User
+class User {
+    constructor(firstName, surName, userName, eMail, password) {
+        this.firstName = firstName;
+        this.surName = surName;
+        this.userName = userName;
+        this.eMail = eMail;
+        this.password = password;
+    }
+}
+
+
+
