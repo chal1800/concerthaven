@@ -1,10 +1,11 @@
 //the function shall be activated when user clicks on login button
-var users = JSON.parse(localStorage.getItem("users"));
+var users = JSON.parse(localStorage.getItem("existingUsers"));
 
 function authUser() {
     var userName = document.getElementById("userName");
     var password = document.getElementById("password");
     //temporary index to check if my user exists or not
+    // tempIndex muss eine Zahl sein, die der Index vom Array nicht annehmen kann -> könnte auch -5 sein
     var tempIndex = -1;
     //first check if either one of the inputs is empty
     if (userName.value === "" || password.value === "") {
@@ -16,15 +17,16 @@ function authUser() {
         // users[i].username/.password to check that the same user is compared
         if (userName.value === users[i].userName && password.value === users[i].password) {
             //if username and password match set tempIndex to it's actual index
+            // Loop ändert den TempIndex zur Indexzahl falls der User existiert( userName und Password stimmen überein)
             tempIndex = i;
             //change the loggedIn status of respective user from false to true so that I can see which user is loggedIn
-            users[i].loggedIn = true;
-            //store users in localStorage with the changed status of loggedIn
-            //since it is an object you need first stringify so that it actually shows everything in "value" what is inside of the object
-            var userString = JSON.stringify(users[i]);
-            //saves the user in local storage
-            localStorage.setItem("currentUser", userString);
-            //open main filter page on same tab
+            /* users[i].loggedIn = true;
+             //store users in localStorage with the changed status of loggedIn
+             //since it is an object you need first stringify so that it actually shows everything in "value" what is inside of the object
+             var userString = JSON.stringify(users[i]);
+             //saves the user in local storage
+             localStorage.setItem("currentUser", userString);
+             //open main filter page on same tab*/
             window.location = "geoloctry.html";
         }
     }

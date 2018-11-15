@@ -1,7 +1,5 @@
 //function to log out of the website
 function logout() {
-    //remove the currentUser from localStorage
-    localStorage.removeItem("currentUser");
     //redirect to login page
     window.location = "loginpage.html";
 }
