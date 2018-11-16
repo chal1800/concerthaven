@@ -1,14 +1,16 @@
 //Sign up - Form validation
 //validateSignUp - this function is triggered when the user is clicking on the submit but
-
+//Sign up - storing new user data
+//fill array with already existing users from storage
+var users = getExistingUser();
 function validateSignUp() {
 //reference to fields; set the input of the variables
-      var firstName = document.getElementById("firstName");
-      var surName = document.getElementById("surName");
-      var userName = document.getElementById("userName");
+    var firstName = document.getElementById("firstName");
+    var surName = document.getElementById("surName");
+    var userName = document.getElementById("userName");
     var eMail = document.getElementById("email");
-      var password = document.getElementById("password");
-//store inputs of fields in an array in order to loop through it in the next step
+    var password = document.getElementById("password");
+//store inputs of fields in an array in order to loop through it in the next step (next step is to check if input fields are empty or not)
     var inputFields = [firstName.value, surName.value, userName.value, eMail.value, password.value];
 
 //check for empty fields - Loop through inputFields array
@@ -19,8 +21,10 @@ function validateSignUp() {
             return false;
         }
     }
-
-    var usersExist = JSON.parse(localStorage.getItem("users"));
+//store key:users from local storage in usersExist in order to loop through
+//JSON.parse -> get back initial type (array of objects) -> don't have to define usersExist as Array because it already takes the initial type
+    var usersExist = getExistingUser();
+//loop through array usersExist
     for (var i = 0; i < usersExist.length; i++) {
         // users[i].username to check that the same userName does exist in local storage
         if (userName.value === usersExist[i].userName) {
@@ -62,15 +66,9 @@ function validateSignUp() {
     return false;
 }
 
-
-//Sign up - storing new user data
-//create an array called users
-users = [];
-//fill array with already existing users from storage?
-var users = JSON.parse(localStorage.getItem("users"));
-
 // pushing new user into existing array users and storing it using localStorage
 function functionPushStorage() {
+
     /*   firstName = document.getElementById("firstName").value;
        surName = document.getElementById("surName").value;
        userName = document.getElementById("userName").value;
@@ -80,8 +78,8 @@ function functionPushStorage() {
     let pushUser = new User(document.getElementById("firstName").value, document.getElementById("surName").value, document.getElementById("userName").value, document.getElementById("email").value, document.getElementById("password").value);
 //push new user data in array users
     users.push(pushUser);
-//stringify array users then store array in local storage
-    localStorage.setItem("users", JSON.stringify(users));
+//stringify array users then store array in local storage key: existingUsers
+    localStorage.setItem("existingUsers", JSON.stringify(users));
 }
 
 
@@ -90,11 +88,11 @@ function functionPushStorage() {
 //needs the parameters inputtext and the alertMsg
 //define restrictions as variables
 // Regex includes all letters a-z, upper and lower case, no restriction on length
-var alphaExp = /^[a-zA-Z]+$/;
+const alphaExp = /^[a-zA-Z]+$/;
 // Regex includes all letters a-z, upper and lower case, all numbers 0-9, no restriction on length
-var alphanumericExp = /^[0-9a-zA-Z]+$/;
+const alphanumericExp = /^[0-9a-zA-Z]+$/;
 // Regex email: any letters possible characters: "-, ".", "+"; must include @ sign followed by possible letters a-z (upper and lower case) and numbers followed by ".", followed by possible letters a-z (upper and lower case), restricted length (min 2, max 4)
-var emailExp = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+const emailExp = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
 
 //function that checks whether input text is an alphabetic character or not and displays alert message on wrong format
 function inputAlphabet(inputtext, alertMsg, element) {
@@ -207,6 +205,11 @@ function lengthDefinePassword(inputtext, min, max) {
     }
 }
 */
+
+//function to get existingUsers from localStorage
+function getExistingUser() {
+    return JSON.parse(localStorage.getItem("existingUsers"));
+}
 //Event Listener - calls the validateSignUp() function as soon as the SIgnup button is clicked
 //makes sure to call the function when the whole page is loaded
 document.addEventListener("DOMContentLoaded", function () {
