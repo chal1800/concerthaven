@@ -6,10 +6,12 @@ let distance1 = new DistanceVenue();
 Object.defineProperty(distance1, "name", {
     value: "Vega"
 });
+
 let distance2 = new DistanceVenue();
 Object.defineProperty(distance2, "name", {
     value: "Den Gra Hal"
 });
+
 let distance3 = new DistanceVenue();
 Object.defineProperty(distance3, "name", {
     value: "Forum"
@@ -41,16 +43,27 @@ bros.push(bro1, bro2, bro3);
 //Match user location name with coordinates for the user location when the user picks location from the list and clicks on button
 function getCoords() {
     userLocation.name = document.getElementById("locSelect").value;
+
+    //filter out the neighborhood that match the users location name and get from the latitude & longitude of it)
+    let matchLat = bros.filter(brom => brom.name === userLocation.name).map(brom => brom.lat);
+    userLocation.lat = matchLat[0];
+    let matchLon = bros.filter(brom => brom.name === userLocation.name).map(brom => brom.lon);
+    userLocation.lon = matchLon[0];
+}
+
+/*function getCoords() {
+
+     userLocation.name = document.getElementById("locSelect").value;
     if (userLocation.name === bro1.name) {
-        userLocation.lon = bro1.lat;
-        userLocation.lat = bro1.lon;
+        userLocation.lat = bro1.lat;
+        userLocation.lon = bro1.lon;
     } else if (userLocation.name === bro2.name) {
-        userLocation.lon = bro2.lat;
-        userLocation.lat = bro2.lon;
+        userLocation.lat = bro2.lat;
+        userLocation.lon = bro2.lon;
     } else if (userLocation.name === bro3.name) {
-        userLocation.lon = bro3.lat;
-        userLocation.lat = bro3.lon;
-    }
+        userLocation.lat = bro3.lat;
+        userLocation.lon = bro3.lon;
+    }*/
 
     /*if ((userL === "Frederiksberg")) {
         userLocation.uLong = 55.676936;
@@ -63,29 +76,24 @@ function getCoords() {
         userLocation.uLat = 12.541514;
     } */
 
-
     //Transform coordinate distances into distance in km//
-
     function distance(lat1, lon1, lat2, lon2) {
         let radLat1 = Math.PI * lat1 / 180;
         let radLat2 = Math.PI * lat2 / 180;
-        /*var radlon1 = Math.PI * lon1 / 180;*/
-        /* var radlon2 = Math.PI * lon2 / 180;*/
         let theta = lon1 - lon2;
         let radTheta = Math.PI * theta / 180;
         let dist = Math.sin(radLat1) * Math.sin(radLat2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.cos(radTheta);
         dist = Math.acos(dist);
         dist = dist * 180 / Math.PI;
         dist = dist * 60 * 1.1515 * 1.609344;
-
         return dist;
     }
 
 //distance function applied on user location and all venues; result is object with name of location and distance of the user
-
+function distanceResults() {
     distance1 = {
         name: distance1.name,
-        km: distance(userLocation.lon, userLocation.lat, venues[0].lat, venues[0].lon)
+        km: distance(userLocation.lat, userLocation.lon, venues[0].lat, venues[0].lon)
     };
     //result pushed into distanceUser array//
     distanceUser.push(distance1);
@@ -93,31 +101,28 @@ function getCoords() {
 
     distance2 = {
         name: distance2.name,
-        km: distance(userLocation.lon, userLocation.lat, venues[1].lat, venues[1].lon)
+        km: distance(userLocation.lat, userLocation.lon, venues[1].lat, venues[1].lon)
     };
     distanceUser.push(distance2);
     console.log("Den Gra Hal", distance2.km.toFixed(2));
 
     distance3 = {
         name: distance3.name,
-        km: distance(userLocation.lon, userLocation.lat, venues[2].lat, venues[2].lon)
+        km: distance(userLocation.lat, userLocation.lon, venues[2].lat, venues[2].lon)
     };
     distanceUser.push(distance3);
     console.log("Forum", distance3.km.toFixed(2));
-
 }
-
 
 //clear existing array values when new location is selected to have a unique array of distances per location when the user presses the button
 function clearArray() {
     distanceUser.length = 0;
 }
 
-
-
 //Apply "getCoords", "filter" & "clearArray" functions on users button click after dropdown choice //
 document.getElementById("buttonClick").addEventListener("click", function () {
     getCoords();
+    distanceResults();
     filter();
     clearArray();
 });
