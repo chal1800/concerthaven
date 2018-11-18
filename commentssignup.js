@@ -21,17 +21,17 @@ function noUser() {
 //validateSignUp - this function is triggered when the user is clicking on the submit button
 function validateSignUp() {
 //reference to fields; set the input of the variables
-    let firstName = document.getElementById("firstName");
-    let surName = document.getElementById("surName");
-    let userName = document.getElementById("userName");
-    let eMail = document.getElementById("email");
-    let password = document.getElementById("password");
+    var firstName = document.getElementById("firstName");
+    var surName = document.getElementById("surName");
+    var userName = document.getElementById("userName");
+    var eMail = document.getElementById("email");
+    var password = document.getElementById("password");
 //store inputs of fields in an array in order to loop through it in the next step (next step is to check if input fields are empty or not)
-    let inputFields = [firstName.value, surName.value, userName.value, eMail.value, password.value];
+    var inputFields = [firstName.value, surName.value, userName.value, eMail.value, password.value];
 
 //check for empty fields - Loop through inputFields array
 //if one field is empty, this function alerts a message, and returns false, to prevent the form from being submitted
-    for (let i = 0; i < inputFields.length; i++) {
+    for (var i = 0; i < inputFields.length; i++) {
         if (inputFields[i] === "") {
             alert("Please fill in all the fields");
             return false;
@@ -39,9 +39,9 @@ function validateSignUp() {
     }
 //store key:users from local storage in usersExist in order to loop through
 //JSON.parse -> get back initial type (array of objects) -> don't have to define usersExist as Array because it already takes the initial type
-    let usersExist = getExistingUser();
-    //loop through array usersExist
-    for (let i = 0; i < usersExist.length; i++) {
+    var usersExist = getExistingUser();
+//loop through array usersExist
+    for (var i = 0; i < usersExist.length; i++) {
         // users[i].username to check that the same userName does exist in local storage
         if (userName.value === usersExist[i].userName) {
             //if userName already exists, alert
@@ -49,8 +49,8 @@ function validateSignUp() {
             return false;
         }
     }
-    //loop through array usersExist
-    for (let i = 0; i < usersExist.length; i++) {
+
+    for (var i = 0; i < usersExist.length; i++) {
         // usersExist[i].eMail to check that the same email doesn't exist in local storage
         if (eMail.value === usersExist[i].eMail) {
             //if email already exists, alert
@@ -73,22 +73,36 @@ function validateSignUp() {
                         //exit function
                         return true;
                     }
-                    }
                 }
             }
         }
+    }
     return false;
 }
+
 // pushing new user into existing array users and storing it using localStorage
 function functionPushStorage() {
-    let users = getExistingUser();
+    var users = getExistingUser();
+    /*   firstName = document.getElementById("firstName").value;
+       surName = document.getElementById("surName").value;
+       userName = document.getElementById("userName").value;
+       eMail = document.getElementById("email").value;
+       password = document.getElementById("password").value;
+       users.push(new User(firstName, surName, userName, eMail, password));*/
     let pushUser = new User(document.getElementById("firstName").value, document.getElementById("surName").value, document.getElementById("userName").value, document.getElementById("email").value, document.getElementById("password").value);
 //push new user data in array users
     users.push(pushUser);
 //stringify array users then store array in local storage key: existingUsers
     localStorage.setItem("existingUsers", JSON.stringify(users));
 }
+
+
 //functions for validating Sign up -> called by validateSignUp()
+//function that checks whether input text is an alphabetic character or not
+//needs the parameters inputtext and the alertMsg
+//define restrictions as variables
+
+
 //function that checks whether input text is an alphabetic character or not and displays alert message on wrong format
 function inputAlphabet(inputtext, alertMsg, element) {
     // Regex includes all letters a-z, upper and lower case, no restriction on length
@@ -105,7 +119,22 @@ function inputAlphabet(inputtext, alertMsg, element) {
     }
 }
 
-//Function that checks whether input text includes alphabetic and numeric characters and displays alert message on wrong format
+/*
+//function that checks whether input text is an alphabetic character or not and displays alert message on wrong format
+function inputAlphabetSurName(inputtext, alertMsg) {
+    //checks value of inputtext against the variable regex alphaExp
+    if (inputtext.value.match(alphaExp)) {
+        return true;
+    } else {
+        //inputtext doesn't match alphaExp
+        //displays the validation rule
+        document.getElementById('p2').innerText = alertMsg;
+        return false;
+    }
+}
+*/
+
+//function that checks whether input text includes alphabetic and numeric characters and displays alert message on wrong format
 function inputAlphanumeric(inputtext, alertMsg, element) {
     // Regex includes all letters a-z, upper and lower case, all numbers 0-9, no restriction on length
     const alphanumericExp = /^[0-9a-zA-Z]+$/;
@@ -120,6 +149,7 @@ function inputAlphanumeric(inputtext, alertMsg, element) {
         return false;
     }
 }
+
 // Function that checks whether an user entered valid email address or not and displays alert message on wrong email address format
 function emailValidation(inputtext, alertMsg, element) {
     // Regex email: any letters possible characters: "-, ".", "+"; must include @ sign followed by possible letters a-z (upper and lower case) and numbers followed by ".", followed by possible letters a-z (upper and lower case), restricted length (min 2, max 4)
@@ -134,10 +164,25 @@ function emailValidation(inputtext, alertMsg, element) {
         return false;
     }
 }
+
+/*
+//function that checks whether input text includes alphabetic and numeric characters and displays alert message on wrong format
+function textAlphanumericPassword(inputtext, alertMsg) {
+    if (inputtext.value.match(alphanumericExp)) {
+        return true;
+    } else {
+        //inputtext doesn't match alphanumericExp
+        //displays the validation rule
+        document.getElementById('p5').innerText = alertMsg;  //this segment displays the validation rule
+        return false;
+    }
+}
+*/
+
 // Function that checks whether the input characters are restricted and displays alert message on wrong format
 function lengthRestriction(inputtext, min, max, element) {
     //variable takes value of input field
-    let userInput = inputtext.value;
+    var userInput = inputtext.value;
     //checks if the length of the input field matches the min and max restrictions
     if (userInput.length >= min && userInput.length <= max) {
         document.getElementById(element).innerHTML = "";
@@ -147,12 +192,42 @@ function lengthRestriction(inputtext, min, max, element) {
         return false;
     }
 }
+
+/*
+function lengthDefineSurName(inputtext, min, max) {
+//variable takes value of input field
+    var userInput = inputtext.value;
+    //checks if the length of the input field matches the min and max restrictions
+    if (userInput.length >= min && userInput.length <= max) {
+        return true;
+    } else {
+        //inputtext doesn't match the length restrictions
+        //displays the validation rule
+        document.getElementById('p2').innerText = "* Please enter between " + min + " and " + max + " characters *";
+        return false;
+    }
+}
+
+function lengthDefinePassword(inputtext, min, max) {
+    var uInput = inputtext.value;
+    if (uInput.length >= min && uInput.length <= max) {
+        return true;
+    } else {
+        //inputtext doesn't match the length restrictions
+        //displays the validation rule
+        document.getElementById('p5').innerText = "* Please enter between " + min + " and " + max + " characters *";  //this segment displays the validation rule
+        return false;
+    }
+}
+*/
+
 //function to get existingUsers from localStorage
 function getExistingUser() {
     return JSON.parse(localStorage.getItem("existingUsers"));
 }
 
-//Event Listener - calls the noUser() and validateSignUp() function as soon as the Signup button is clicked
+
+//Event Listener - calls the validateSignUp() function as soon as the SIgnup button is clicked
 //makes sure to call the function when the whole page is loaded
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("signupbtn").addEventListener("click", function () {
@@ -160,4 +235,3 @@ document.addEventListener("DOMContentLoaded", function () {
         validateSignUp();
     });
 });
-
