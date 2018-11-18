@@ -16,10 +16,10 @@ class User {
 
 //Class UserLoc to match user's location input with user location properties
 class UserLoc {
-    constructor(name, lon, lat) {
+    constructor(name, lat, lon) {
         this.name = name;
-        this.lon = lon;
-        this.lat = lat
+        this.lat = lat;
+        this.lon = lon
     }
 }
 

@@ -2,7 +2,18 @@
 //validateSignUp - this function is triggered when the user is clicking on the submit but
 //Sign up - storing new user data
 //fill array with already existing users from storage
-var users = getExistingUser();
+let users = getExistingUser();
+
+function noUser() {
+    if (users === null) {
+        let users = [];
+        const sophia = new User("Sophia", "Nagler", "SoNa", "so@na.com", "hallo123");
+        const chris = new User("Chris", "Algier", "ChAl", "cha@al.com", "hallo456");
+        users.push(sophia, chris)
+        localStorage.setItem("existingUsers", JSON.stringify(users));
+    }
+}
+
 function validateSignUp() {
 //reference to fields; set the input of the variables
     var firstName = document.getElementById("firstName");
@@ -68,7 +79,7 @@ function validateSignUp() {
 
 // pushing new user into existing array users and storing it using localStorage
 function functionPushStorage() {
-
+    let users = getExistingUser();
     /*   firstName = document.getElementById("firstName").value;
        surName = document.getElementById("surName").value;
        userName = document.getElementById("userName").value;
@@ -214,6 +225,8 @@ function getExistingUser() {
 //makes sure to call the function when the whole page is loaded
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("signupbtn").addEventListener("click", function () {
+        noUser();
         validateSignUp();
     });
 });
+
