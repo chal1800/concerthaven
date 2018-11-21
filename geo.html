@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="geo.css">
+</head>
+<p> Where are you? </p>
+<br> 
+<body>
+<form>
+    <select id="locSelect">
+        <option value="Frederiksberg">Frederiksberg</option>
+        <option value="Vesterbro">Vesterbro</option>
+        <option value="Nørrebro">Nørrebro</option>
+</select>
+</form>
+<br> <br> 
+<p> How many km are you willing to travel? </p>
+<form>
+    <select id="distSelect">
+        <option value=1>Less than 1 km</option>
+        <option value=3>Less than 3 km</option>
+        <option value=5>Less than 5 km</option>
+    </select>
+</form>
+<br> <br> 
+<button type="button" id="buttonClick">Show selected</button>
+<br> <br> 
+<button type="button" id="nextClick">Next step: Set my concert preferences </button>
+<pre id="demo"></pre>
+<br>
+
+<script src="class.js"></script>
+<script src="geoloc.js"></script>
+</body>
+</html>

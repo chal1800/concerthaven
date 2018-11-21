@@ -1,0 +1,105 @@
+body {
+    background: url(forside_2_trykklar.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    text-align: center;
+    font-family: Garamond;
+font-style:normal;
+font-size: 25px; 
+margin-left: 10%;
+margin-right: 10%;
+padding: 34px;
+color: white; 
+}
+
+
+#distSelect {
+    font-size: 25px; 
+    margin-left: 25%;
+    margin-right: 25%;
+    padding: 34px;
+    color: white; 
+    width: 30%;
+	margin-left: 25%;
+	margin-top: 20px;
+	background-color: rgba(0, 0, 0, 0.5);
+	border: 1px solid 2B2A2A;
+    border-radius: 50px;
+    font-family:Garamond;
+  
+}
+
+#locSelect {
+    font-size: 25px; 
+    margin-left: 25%;
+    margin-right: 25%;
+    padding: 34px;
+    color:white; 
+    width: 30%;
+	background-color: rgba(0, 0, 0, 0.5);
+	border: 1px solid 2B2A2A;
+    border-radius: 50px;
+    font-family:Garamond;
+      
+}
+  p     {
+    width: 50%;
+    margin-left: 25%;
+    margin-left: 25%;
+	margin-top: 20px;
+	background-color: rgba(0, 0, 0, 0.5);
+	border: 1px solid 2B2A2A;
+    border-radius: 50px;
+    font-family:Garamond;
+    text-align: center; 
+    font-weight: normal; 
+   
+}
+
+#buttonClick {
+   font-size: 25px; 
+   margin-left: 25%;
+   margin-right: 25%;
+   padding: 34px;
+   color:white; 
+   width: 20%;
+   margin-top: 15px;
+   background-color: rgba(0, 0, 0, 0.5);
+   border: 1px solid 2B2A2A;
+   border-radius: 25px;
+   font-family:Garamond;
+
+
+}
+
+#demo  {
+    font-size: 25px; 
+    margin-right: 25%;
+    margin-left: 32%; 
+    padding: 34px;
+    color:white; 
+    width: 30%;
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid 2B2A2A;
+    border-radius: 25px;
+    font-family:Garamond;
+ 
+ 
+ }
+
+#nextClick  {
+    font-size: 25px; 
+    margin-left: 60%;
+    padding: 34px;
+    color:white; 
+    width: 50%;
+    margin-top: 15px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid 2B2A2A;
+    border-radius: 20px;
+    font-family:Garamond;
+ 
+ }

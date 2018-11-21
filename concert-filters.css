@@ -1,0 +1,62 @@
+
+body {
+    background: url("def856d54fe014d1b963bf234313811d20151910424942.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    text-align: center;
+    
+
+}
+
+#genreSelect, #start, #end, #priceSelect{
+    font-size: 20px; 
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 25px;
+    color: white; 
+    width: 15%;
+	margin-left: 20%;
+	background-color: rgba(0, 0, 0, 0.5);
+	border: 1px solid 2B2A2A;
+    border-radius: 40px;
+    font-family:Garamond;
+
+}
+
+#concertClick {
+    font-size: 20px; 
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 25px;
+    color: white; 
+    width: 23%;
+	margin-left: 20%;
+	margin-top: 15px;
+	background-color: rgba(0, 0, 0, 0.5);
+	border: 1px solid 2B2A2A;
+    border-radius: 30px;
+    font-family:Garamond;
+
+}
+ h1     {
+   
+        font-family:Garamond;
+        text-align: center; 
+        color: white;
+        font-size: 37px; 
+        
+    }
+    p {
+       font-family:Garamond;
+        text-align: center; 
+        color: white;
+        font-size: 24px;  
+        
+    }
+    
+
+   
+
+    
