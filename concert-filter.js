@@ -34,7 +34,11 @@ let filteredVenueConcerts = [];
 
 
 function nameFilter() {
-    filteredVenueConcerts = concerts.filter(venueNameChoice => venueNameChoice.venueName === filteredVenues[0] || venueNameChoice.venueName === filteredVenues[1] || venueNameChoice.venueName === filteredVenues[2]);
+    filteredVenueConcerts = concerts.filter(venueNameChoice => venueNameChoice.venueName === filteredVenues[0] ||
+        venueNameChoice.venueName === filteredVenues[1] ||
+        venueNameChoice.venueName === filteredVenues[2]
+    )
+    ;
     console.log(filteredVenueConcerts);
 }
 
@@ -73,7 +77,7 @@ function noConcert() {
 
 
 //Apply "nameFilter", "dateRequirement" & "noConcert" functions on users button click after dropdown choice
-document.getElementById("concertClick").addEventListener("click", function () {
+document.getElementById("filterConcertsBtn").addEventListener("click", function () {
     nameFilter();
     dateRequirement();
     noConcert();
