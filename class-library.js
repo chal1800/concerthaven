@@ -15,7 +15,7 @@ class User {
 //3. GEO-LOCATION
 
 //Class UserLoc to match user's location input with user location properties
-class UserLoc {
+class UserLocation {
     constructor(name, lat, lon) {
         this.name = name;
         this.lat = lat;
@@ -24,7 +24,7 @@ class UserLoc {
 }
 
 //Class for neighborhood to match with user's location
-class Bro {
+class Neighborhood {
     constructor(name, lat, lon) {
         this.name = name;
         this.lat = lat;

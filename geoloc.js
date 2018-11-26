@@ -1,5 +1,5 @@
 //Create an object for the user's location which will be filled with the user's input through "getCoords"
-let userLocation = new UserLoc();
+let userLocation = new UserLocation();
 
 //Objects for the distances between user location and the specific venues for all venues; set venue
 let distance1 = new DistanceVenue();
@@ -30,24 +30,24 @@ const venue3 = new Venue("Forum", 55.681285, 12.553624);
 venues.push(venue1, venue2, venue3);
 
 //Initiate array "venues" to store variables for each neighborhood
-let bros = [];
+let neighborhoods = [];
 
 //Define constants for the specific neighborhoods and assign them name, lon, lat
-const bro1 = new Bro("Frederiksberg", 55.676936, 12.506579);
-const bro2 = new Bro("Nørrebro", 55.699031, 12.556984);
-const bro3 = new Bro("Vesterbro", 55.664409, 12.541514);
+const neighborhood1 = new Neighborhood ("Frederiksberg", 55.676936, 12.506579);
+const neighborhod2 = new Neighborhood("Nørrebro", 55.699031, 12.556984);
+const neighborhood3 = new Neighborhood("Vesterbro", 55.664409, 12.541514);
 
 //Push them into array with all neighborhoods "bros"
-bros.push(bro1, bro2, bro3);
+neighborhoods.push(neighborhood1, neighborhod2, neighborhood3);
 
 //Match user location name with coordinates for the user location when the user picks location from the list and clicks on button
 function getCoords() {
     userLocation.name = document.getElementById("locSelect").value;
 
     //filter out the neighborhood that match the users location name and get from the latitude & longitude of it)
-    let matchLat = bros.filter(brom => brom.name === userLocation.name).map(brom => brom.lat);
+    let matchLat = neighborhoods.filter(matchHood => matchHood.name === userLocation.name).map(matchHood => matchHood.lat);
     userLocation.lat = matchLat[0];
-    let matchLon = bros.filter(brom => brom.name === userLocation.name).map(brom => brom.lon);
+    let matchLon = neighborhoods.filter(matchHood => matchHood.name === userLocation.name).map(matchHood => matchHood.lon);
     userLocation.lon = matchLon[0];
 }
 
@@ -114,7 +114,7 @@ function distanceResults() {
 }
 
 //clear existing array values when new location is selected to have a unique array of distances per location when the user presses the button
-function clearArray() {
+function clearDistanceUser() {
     distanceUser.length = 0;
 }
 
@@ -123,7 +123,7 @@ document.getElementById("buttonClick").addEventListener("click", function () {
     getCoords();
     distanceResults();
     filter();
-    clearArray();
+    clearDistanceUser();
 });
 
 //Initializing array for distances which contains all names and distances (distance1,2 & 3 objects)
