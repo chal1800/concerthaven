@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ahoi! Welcome to Concerthaven</title>
+
+</head>
+
+<body>
+
+
+<p id="demo"></p>
+<p><b>Which music are you into?</b></p>
+
+<form>
+    <select id="genreSelect">
+        <option value="Pop-Rock">Pop-Rock</option>
+        <option value="Electro">Electro</option>
+        <option value="Hip-Hop">Hip-Hop</option>
+        <option value="Classic">Classic</option>
+    </select>
+</form>
+<p><b>What do you want to pay for your tickets?</b></p>
+<form>
+    <select id="priceSelect">
+        <option value=150><150kr.</option>
+        <option value=350><350kr.</option>
+        <option value=500><500kr.</option>
+    </select>
+</form>
+
+<p><b>When are you free?</b></p>
+
+Enter a start date:<br>
+<input type="date" id="start" max="2020-12-12"><br><br>
+Enter an end date: <br>
+
+<input type="date" id="end" min="2018-12-01"><br><br>
+<br>
+<button type="button" id="concertClick">Show me my concerts!</button>
+
+<pre id="filter"></pre>
+<script src="class.js"></script>
+<script src="concert-filter.js"></script>
+
+
+</body>
+</html>
