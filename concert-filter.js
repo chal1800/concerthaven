@@ -34,7 +34,9 @@ let filteredVenueConcerts = [];
 
 
 function nameFilter() {
-    filteredVenueConcerts = concerts.filter(venueNameChoice => venueNameChoice.venueName === filteredVenues[0] || venueNameChoice.venueName === filteredVenues[1] || venueNameChoice.venueName === filteredVenues[2]);
+    filteredVenueConcerts = concerts.filter(venueNameChoice => venueNameChoice.venueName === filteredVenues[0] ||
+        venueNameChoice.venueName === filteredVenues[1] ||
+        venueNameChoice.venueName === filteredVenues[2]);
     console.log(filteredVenueConcerts);
 }
 
@@ -43,11 +45,12 @@ function nameFilter() {
 function dateRequirement() {
     let startDate = document.getElementById("start").value;
     let endDate = document.getElementById("end").value;
-    const valiDate = /^\d{4}-\d{2}-\d{2}$/;
-    if (startDate.match(valiDate) && endDate.match(valiDate)) {
-        concertFilter()
-    } else {
-        alert("Type in your dates")
+        const valiDate = /^\d{4}-\d{2}-\d{2}$/;
+        if (startDate.match(valiDate) && endDate.match(valiDate)) {
+            concertFilter()
+        } else {
+            alert("Type in your dates")
+        }
     }
 }
 
@@ -57,7 +60,9 @@ let filteredConcerts = [];
 //Filter the name-filtered concerts for user inputs of genre, price and dates
 function concertFilter() {
     filteredConcerts = filteredVenueConcerts.filter(genreChoice => genreChoice.concertGenre === document.getElementById("genreSelect").value &&
-        genreChoice.ticketPrice <= document.getElementById("priceSelect").value && genreChoice.concertDate >= document.getElementById("start").value && genreChoice.concertDate <= document.getElementById("end").value);
+        genreChoice.ticketPrice <= document.getElementById("priceSelect").value &&
+        genreChoice.concertDate >= document.getElementById("start").value &&
+        genreChoice.concertDate <= document.getElementById("end").value);
     console.log(filteredConcerts);
     document.getElementById("filter").innerHTML = JSON.stringify(filteredConcerts, null, 4);
     return (filteredConcerts);
