@@ -1,9 +1,9 @@
 body {
-    background: url(forside_2_trykklar.jpg) no-repeat center center fixed;
+    background: url(forside_2_trykklar.jpg) no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover;
+    background-size: 65%;
     text-align: center;
     font-family: Garamond;
 font-style:normal;
@@ -17,15 +17,14 @@ color: white;
 
 #distSelect {
     font-size: 25px; 
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-left: 75%;
+    
     padding: 34px;
     color: white; 
     width: 30%;
-	margin-left: 25%;
 	margin-top: 20px;
-	background-color: rgba(0, 0, 0, 0.5);
-	border: 1px solid 2B2A2A;
+	background-color: rgba(0, 0, 0, 0.6);
+	border: none;
     border-radius: 50px;
     font-family:Garamond;
   
@@ -33,72 +32,55 @@ color: white;
 
 #locSelect {
     font-size: 25px; 
-    margin-left: 25%;
-    margin-right: 25%;
+    margin-left: 75%;
     padding: 34px;
     color:white; 
     width: 30%;
-	background-color: rgba(0, 0, 0, 0.5);
-	border: 1px solid 2B2A2A;
+	background-color: rgba(0, 0, 0, 0.6);
+	border: none;
     border-radius: 50px;
     font-family:Garamond;
       
 }
   p     {
-    width: 50%;
-    margin-left: 25%;
-    margin-left: 25%;
-	margin-top: 20px;
-	background-color: rgba(0, 0, 0, 0.5);
-	border: 1px solid 2B2A2A;
-    border-radius: 50px;
-    font-family:Garamond;
+   
+	margin-left: 80%; 
+	font-family:Garamond;
     text-align: center; 
-    font-weight: normal; 
+    font-weight: normal;
+    color:  black; 
    
 }
 
 #buttonClick {
    font-size: 25px; 
-   margin-left: 25%;
-   margin-right: 25%;
+   margin-left: 80%;
    padding: 34px;
    color:white; 
-   width: 20%;
+   width: 18%;
    margin-top: 15px;
-   background-color: rgba(0, 0, 0, 0.5);
-   border: 1px solid 2B2A2A;
+   background-color: rgba(0, 0, 0, 0.6);
+   border: none;
    border-radius: 25px;
    font-family:Garamond;
-
-
 }
 
 #demo  {
     font-size: 25px; 
-    margin-right: 25%;
-    margin-left: 32%; 
-    padding: 34px;
-    color:white; 
-    width: 30%;
-    margin-top: 15px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: 1px solid 2B2A2A;
-    border-radius: 25px;
+    color:black; 
+    margin-left: 75%;
     font-family:Garamond;
- 
- 
  }
 
 #nextClick  {
-    font-size: 25px; 
-    margin-left: 60%;
+    font-size: 20px; 
+    margin-left: 72%;
     padding: 34px;
-    color:white; 
-    width: 50%;
+    color:black; 
+    width: 40%;
     margin-top: 15px;
-    background-color: rgba(0, 0, 0, 0.5);
-    border: 1px solid 2B2A2A;
+    background-color: rgba(32, 165, 49, 0.582);
+    border: none;
     border-radius: 20px;
     font-family:Garamond;
  
