@@ -1,4 +1,6 @@
 
+
+
 body {
     background: url("def856d54fe014d1b963bf234313811d20151910424942.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -19,7 +21,7 @@ body {
     width: 15%;
 	margin-left: 20%;
 	background-color: rgba(0, 0, 0, 0.5);
-	border: 1px solid 2B2A2A;
+	border: none;
     border-radius: 40px;
     font-family:Garamond;
 
@@ -34,8 +36,8 @@ body {
     width: 23%;
 	margin-left: 20%;
 	margin-top: 15px;
-	background-color: rgba(0, 0, 0, 0.5);
-	border: 1px solid 2B2A2A;
+	background-color: rgba(73, 40, 2, 0.9);
+	border: none;
     border-radius: 30px;
     font-family:Garamond;
 
@@ -55,6 +57,11 @@ body {
         font-size: 24px;  
         
     }
+    
+
+   
+
+    
     
 
    
