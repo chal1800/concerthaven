@@ -85,3 +85,18 @@ color: white;
     font-family:Garamond;
  
  }
+
+    
+ #signoffbtn {
+        
+    font-size: 17px; 
+    margin-left: 85%;
+    padding: 25px;
+    color: white; 
+    width: 10%;
+    margin-top: 15px;
+    background-color: black;
+    border: none;
+    border-radius: 30px;
+    font-family:Garamond;
+ }
