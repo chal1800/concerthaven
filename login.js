@@ -8,22 +8,22 @@ function authUser() {
     let password = document.getElementById("password");
     //temporary index to check if user exists or not
     let tempIndex = -1;
-    //first check if either one of the inputs is empty
+    //check if either one of the inputs is empty
     if (userName.value === "" || password.value === "") {
         alert("Please type in both username and password!");
-        //return false to get out of the function and wait for a new action
+        //exit function
         return false;
     }
     for (var i = 0; i < users.length; i++) {
         // users[i].username/.password to check that the same user is compared
         if (userName.value === users[i].userName && password.value === users[i].password) {
-            //if username and password match set tempIndex to its actual index
+            //if username and password match set tempIndex to actual index
             tempIndex = i;
-             //open geolocation page on same tab
+             //open geolocation page
             window.location = "geo.html";
         }
     }
-    //this will only happen when the program checked all the users and tempIndex was never set to i but still set to initial -1
+    //when program checked all the users and tempIndex was never set to i but still set to initial -1
     if (tempIndex === -1) {
         alert("Your password or username is incorrect. Please try again!");
     }
