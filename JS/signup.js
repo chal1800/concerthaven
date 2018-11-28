@@ -68,18 +68,17 @@ function validateSignUp() {
                         // calls function functionPushStorage()
                         functionPushStorage();
                         //redirects to html login page
-                        window.location = "../HTML/index.html";
+                        window.location = "loginpage.html";
                         //exit function
                         return true;
+                    }
                     }
                 }
             }
         }
-    }
     //exit function
     return false;
 }
-
 // pushing new user into existing array users and storing it in localStorage
 function functionPushStorage() {
     //get stored users from localStorage
@@ -91,7 +90,6 @@ function functionPushStorage() {
 //stringify array users then store array in localStorage (key: existingUsers)
     localStorage.setItem("existingUsers", JSON.stringify(users));
 }
-
 //functions for validating Sign up - called by validateSignUp()
 //function that checks whether input text is an alphabetic character or not and displays alert message if requirement is not met
 function inputAlphabet(inputtext, alertMsg, element) {
@@ -130,7 +128,6 @@ function inputAlphanumeric(inputtext, alertMsg, element) {
         return false;
     }
 }
-
 // Function that checks whether a user entered valid email address or not and displays alert if requirement is not met
 function emailValidation(inputtext, alertMsg, element) {
     // Regex email: any letters possible characters: "-, ".", "+"; must include @ sign followed by possible letters a-z (upper and lower case) and numbers followed by ".", followed by possible letters a-z (upper and lower case), restricted length (min 2, max 4)
@@ -148,7 +145,6 @@ function emailValidation(inputtext, alertMsg, element) {
         return false;
     }
 }
-
 // Function that checks if the count of input characters meets the restriction and displays alert message if requirement is not met
 function lengthRestriction(inputtext, min, max, element) {
     //variable takes value of input field
@@ -166,7 +162,6 @@ function lengthRestriction(inputtext, min, max, element) {
         return false;
     }
 }
-
 //function to get existingUsers from localStorage
 function getExistingUser() {
     return JSON.parse(localStorage.getItem("existingUsers"));
@@ -175,8 +170,8 @@ function getExistingUser() {
 //Event Listener - calls the noUser() and validateSignUp() function as soon as the Signup button is clicked
 //makes sure to call the function when the whole page is loaded
 /*document.addEventListener("DOMContentLoaded", function () {*/
-document.getElementById("signupbtn").addEventListener("click", function () {
-    noUser();
-    validateSignUp();
-});
+    document.getElementById("signupbtn").addEventListener("click", function () {
+        noUser();
+        validateSignUp();
+    });
 /*});*/
