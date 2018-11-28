@@ -34,6 +34,7 @@ function validateSignUp() {
     for (let i = 0; i < inputFields.length; i++) {
         if (inputFields[i] === "") {
             alert("Please fill in all the fields");
+            //exit function
             return false;
         }
     }
@@ -45,6 +46,7 @@ function validateSignUp() {
         if (userName.value === usersExist[i].userName) {
             //if userName already exists, alert
             alert("Username already exists");
+            //exit function
             return false;
         }
     }
@@ -54,6 +56,7 @@ function validateSignUp() {
         if (eMail.value === usersExist[i].eMail) {
             //if email already exists, alert
             alert("Email already registered");
+            //exit function
             return false;
         }
     }
@@ -69,7 +72,6 @@ function validateSignUp() {
                         functionPushStorage();
                         //redirects to html login page
                         window.location = "../HTML/index.html";
-                        //exit function
                         return true;
                     }
                     }
@@ -99,7 +101,6 @@ function inputAlphabet(inputtext, alertMsg, element) {
     if (inputtext.value.match(alphaExp)) {
         //in case user changes input value which before didn't meet the requirement the following blanks the alert message shown in DOM
         document.getElementById(element).innerHTML = "";
-        //exit function
         return true;
     } else {
         //inputtext doesn't match alphaExp
@@ -118,7 +119,6 @@ function inputAlphanumeric(inputtext, alertMsg, element) {
     if (inputtext.value.match(alphanumericExp)) {
         //in case user changes input value which before didn't meet the requirement the following blanks the alert message shown in DOM
         document.getElementById(element).innerHTML = "";
-        //exit function
         return true;
     } else {
         //inputtext doesn't match inputAlphanumeric
@@ -135,7 +135,6 @@ function emailValidation(inputtext, alertMsg, element) {
     if (inputtext.value.match(emailExp)) {
         //in case user changes input value which before didn't meet the requirement the following blanks the alert message shown in DOM
         document.getElementById(element).innerHTML = "";
-        //exit function
         return true;
     } else {
         //inputtext doesn't match regex variable (emailExp)
@@ -153,7 +152,6 @@ function lengthRestriction(inputtext, min, max, element) {
     if (userInput.length >= min && userInput.length <= max) {
         //in case user changes input value which before didn't meet the requirement the following blanks the alert message shown in DOM
         document.getElementById(element).innerHTML = "";
-        //exit function
         return true;
     } else {
         //displays validation rule
