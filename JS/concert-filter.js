@@ -1,7 +1,7 @@
 //Initiate array to store all concert objects
 let concerts = [];
 
-//Define the concert objects
+//Define the concert instances
 const concert1 = new Concert("Adele", "Rolling in the deep", 450, "Forum", "Pop-Rock", 5, "19:00", ("2019-1-25"));
 const concert2 = new Concert("Asap Rocky", "Long Live Asap", 140, "Forum", "Hip-Hop", 5, "20:00", ("2019-1-27"));
 const concert3 = new Concert("Bocelli", "Forever", 450, "Forum", "Classic", 5, "19:00", ("2019-01-28"));
@@ -15,24 +15,13 @@ const concert9 = new Concert("Placido Domingo", "Fly", 420, "Vega", "Classic", 5
 //Push them into the concerts array
 concerts.push(concert1, concert2, concert3, concert4, concert5, concert6, concert7, concert8, concert9);
 
-/*
-function locationFilter() {
-    let locationFilteredConcerts = concerts.filter(locationChoice => locationChoice.venueName === distances.value);
-    console.log(locationFilteredConcerts);
-    document.getElementById("filter").innerHTML = JSON.stringify(locationFilteredConcerts, null, 4);
-    return (locationFilteredConcerts);
-}
-*/
-
-//get the result from the distance filter (geoloc.js) as venue names from the local storage to narrow down the concert array
+//Get the result from the distance filter (geoloc.js) as venue names from the local storage to narrow down the concert array
 let filteredVenues = JSON.parse(localStorage.getItem("Venues"));
 
-//initiate array for the venue-filtered concerts
+//Initiate array for the venue-filtered concerts
 let filteredVenueConcerts = [];
 
 //Filter all concerts by the distance-filtered venues
-
-
 function nameFilter() {
     filteredVenueConcerts = concerts.filter(venueNameChoice => venueNameChoice.venueName === filteredVenues[0] ||
         venueNameChoice.venueName === filteredVenues[1] ||
@@ -41,7 +30,6 @@ function nameFilter() {
     ;
     console.log(filteredVenueConcerts);
 }
-
 
 //Define requirement for a start- and end-date user input with a RegEx, show alert if not matching
 function dateRequirement() {
@@ -60,15 +48,16 @@ let filteredConcerts = [];
 
 //Filter the name-filtered concerts for user inputs of genre, price and dates
 function concertFilter() {
-    filteredConcerts = filteredVenueConcerts.filter(genreChoice => genreChoice.concertGenre === document.getElementById("genreSelect").value &&
-        genreChoice.ticketPrice <= document.getElementById("priceSelect").value && genreChoice.concertDate >= document.getElementById("start").value && genreChoice.concertDate <= document.getElementById("end").value);
+    filteredConcerts = filteredVenueConcerts.filter(genreChoice => genreChoice.concertGenre === document.getElementById("genreSelect").value
+        && genreChoice.ticketPrice <= document.getElementById("priceSelect").value
+        && genreChoice.concertDate >= document.getElementById("start").value
+        && genreChoice.concertDate <= document.getElementById("end").value);
     console.log(filteredConcerts);
     document.getElementById("filter").innerHTML = JSON.stringify(filteredConcerts, null, 4);
     return (filteredConcerts);
 }
 
 //Alert if no concerts matching the users inputs were found
-
 function noConcert() {
     if (filteredConcerts.length === 0) {
         alert("Sorry, we found no concerts for you");

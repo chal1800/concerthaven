@@ -34,13 +34,13 @@ let neighborhoods = [];
 
 //Define constants for the specific neighborhoods and assign them name, lon, lat
 const neighborhood1 = new Neighborhood("Frederiksberg", 55.676936, 12.506579);
-const neighborhod2 = new Neighborhood("Nørrebro", 55.699031, 12.556984);
+const neighborhood2 = new Neighborhood("Nørrebro", 55.699031, 12.556984);
 const neighborhood3 = new Neighborhood("Vesterbro", 55.664409, 12.541514);
 
 //Push them into array with all neighborhoods "bros"
-neighborhoods.push(neighborhood1, neighborhod2, neighborhood3);
+neighborhoods.push(neighborhood1, neighborhood2, neighborhood3);
 
-//Match user location name with coordinates for the user location when the user picks location from the list and clicks on button
+//Match user location name with coordinates for the user location when the user picks location from the list
 function getCoords() {
     userLocation.name = document.getElementById("locSelect").value;
 
@@ -50,30 +50,6 @@ function getCoords() {
     let matchLon = neighborhoods.filter(matchHood => matchHood.name === userLocation.name).map(matchHood => matchHood.lon);
     userLocation.lon = matchLon[0];
 }
-
-/*function getCoords() {
-     userLocation.name = document.getElementById("locSelect").value;
-    if (userLocation.name === bro1.name) {
-        userLocation.lat = bro1.lat;
-        userLocation.lon = bro1.lon;
-    } else if (userLocation.name === bro2.name) {
-        userLocation.lat = bro2.lat;
-        userLocation.lon = bro2.lon;
-    } else if (userLocation.name === bro3.name) {
-        userLocation.lat = bro3.lat;
-        userLocation.lon = bro3.lon;
-    }*/
-
-/*if ((userL === "Frederiksberg")) {
-    userLocation.uLong = 55.676936;
-    userLocation.uLat = 12.506579;
-} else if ((userL === "Nørrebro")) {
-    userLocation.uLong = 55.699031;
-    userLocation.uLat = 12.556984;
-} else if ((userL === "Vesterbro")) {
-    userLocation.uLong = 55.664409;
-    userLocation.uLat = 12.541514;
-} */
 
 //Transform coordinate distances into distance in km//
 function distance(lat1, lon1, lat2, lon2) {
@@ -88,7 +64,8 @@ function distance(lat1, lon1, lat2, lon2) {
     return dist;
 }
 
-//distance function applied on user location and all venues; result is object with name of location and distance of the user
+//Distance function applied on user location and all venues; result is object with name of location
+// and distance of the user
 function distanceResults() {
     distance1 = {
         name: distance1.name,
@@ -113,7 +90,8 @@ function distanceResults() {
     console.log("Forum", distance3.km.toFixed(2));
 }
 
-//clear existing array values when new location is selected to have a unique array of distances per location when the user presses the button
+//clear existing array values when new location is selected to have a unique array of distances per location
+// when the user presses the button
 function clearDistanceUser() {
     distanceUser.length = 0;
 }
@@ -132,7 +110,8 @@ let distances = [];
 //Initializing array for the names of the filtered venues
 let filteredVenues = [];
 
-//filtering distanceUser for the users input of his max. willingness to travel and return new, filtered array "distances"
+//filtering distanceUser for the users input of his max. willingness to travel and
+// return new, filtered array "distances"; narrow this array down to only the names of the venues
 function filter() {
     distances = distanceUser.filter(choice => choice.km < document.getElementById("distSelect").value);
     console.log(distances);
