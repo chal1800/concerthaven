@@ -1,8 +1,8 @@
 //Sign up - Form validation
-//fill array with already existing users from localStorage -> receive initial type
+//fill array with already existing users from localStorage
 let users = getExistingUser();
 
-//in case localStorage is empty - triggered when user clicks on sign up button
+//in case localStorage is empty
 function noUser() {
     //checks if localStorage is empty
     if (users === null) {
@@ -18,7 +18,7 @@ function noUser() {
     }
 }
 
-//validateSignUp - this function is triggered when the user is clicking on the submit button
+//validateSignUp
 function validateSignUp() {
 //reference to fields to set the input of the variables
     let firstName = document.getElementById("firstName");
@@ -30,14 +30,15 @@ function validateSignUp() {
     let inputFields = [firstName.value, surName.value, userName.value, eMail.value, password.value];
 
 //check for empty fields - loop through inputFields array
-//if one field is empty, this function alerts a message, and returns false, to prevent the form from being submitted
+//if one field is empty, this function alerts a message, and returns false
     for (let i = 0; i < inputFields.length; i++) {
         if (inputFields[i] === "") {
             alert("Please fill in all the fields");
+            //exit function
             return false;
         }
     }
-//get users from localStorage (key: existingUsers); in order to loop through
+//get users from localStorage (key: existingUsers) in order to loop through
     let usersExist = getExistingUser();
     //loop through array usersExist
     for (let i = 0; i < usersExist.length; i++) {
@@ -45,6 +46,7 @@ function validateSignUp() {
         if (userName.value === usersExist[i].userName) {
             //if userName already exists, alert
             alert("Username already exists");
+            //exit function
             return false;
         }
     }
@@ -54,11 +56,12 @@ function validateSignUp() {
         if (eMail.value === usersExist[i].eMail) {
             //if email already exists, alert
             alert("Email already registered");
+            //exit function
             return false;
         }
     }
 //check each input field in the order that it appears in form
-//each input field has different restrictions; the if function calls the corresponding function
+//each input field has different requirements; the if function calls the corresponding requirement function
 //if function for first field is fulfilled -> triggers next if function for next field
     if (inputAlphabet(firstName, "* For your first name please use alphabets only *", "p1") && lengthRestriction(firstName, 3, 15, "p1")) {
         if (inputAlphabet(surName, "* For your surname please use alphabets only *", "p2") && lengthRestriction(surName, 6, 15, "p2")) {
@@ -79,7 +82,7 @@ function validateSignUp() {
     //exit function
     return false;
 }
-// pushing new user into existing array users and storing it in localStorage
+// pushing new user into existing array users and storing it in localStorage - called by validateSignUp()
 function functionPushStorage() {
     //get stored users from localStorage
     let users = getExistingUser();
@@ -103,14 +106,14 @@ function inputAlphabet(inputtext, alertMsg, element) {
         return true;
     } else {
         //inputtext doesn't match alphaExp
-        //displays the validation rule
+        //displays the requirement
         document.getElementById(element).innerHTML = alertMsg;
         //exit function
         return false;
     }
 }
 
-//Function that checks whether input text includes alphabetic and numeric characters and displays alert message if requirement is not met
+//function that checks whether input text includes alphabetic and numeric characters and displays alert message if requirement is not met
 function inputAlphanumeric(inputtext, alertMsg, element) {
     // Regex includes all letters a-z, upper and lower case, all numbers 0-9, no restriction on length
     const alphanumericExp = /^[0-9a-zA-Z]+$/;
@@ -121,17 +124,18 @@ function inputAlphanumeric(inputtext, alertMsg, element) {
         //exit function
         return true;
     } else {
-        //inputtext doesn't match inputAlphanumeric
-        //displays the validation rule
+        //inputtext doesn't match alphanumericExp
+        //displays the requirement
         document.getElementById(element).innerHTML = alertMsg;
         //exit function
         return false;
     }
 }
-// Function that checks whether a user entered valid email address or not and displays alert if requirement is not met
+// function that checks whether a user entered valid email address or not and displays alert if requirement is not met
 function emailValidation(inputtext, alertMsg, element) {
     // Regex email: any letters possible characters: "-, ".", "+"; must include @ sign followed by possible letters a-z (upper and lower case) and numbers followed by ".", followed by possible letters a-z (upper and lower case), restricted length (min 2, max 4)
     const emailExp = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
+    //checks value of inputtext against the regex variable (emailExp)
     if (inputtext.value.match(emailExp)) {
         //in case user changes input value which before didn't meet the requirement the following blanks the alert message shown in DOM
         document.getElementById(element).innerHTML = "";
@@ -139,13 +143,13 @@ function emailValidation(inputtext, alertMsg, element) {
         return true;
     } else {
         //inputtext doesn't match regex variable (emailExp)
-        //displays the validation rule
+        //displays the requirement
         document.getElementById(element).innerHTML = alertMsg;
         //exit function
         return false;
     }
 }
-// Function that checks if the count of input characters meets the restriction and displays alert message if requirement is not met
+// function that checks if the count of input characters meets the restriction and displays alert message if requirement is not met
 function lengthRestriction(inputtext, min, max, element) {
     //variable takes value of input field
     let userInput = inputtext.value;
@@ -156,7 +160,7 @@ function lengthRestriction(inputtext, min, max, element) {
         //exit function
         return true;
     } else {
-        //displays validation rule
+        //displays requirement
         document.getElementById(element).innerHTML = "* Please enter between " + min + " and " + max + " characters *";
         //exit function
         return false;
@@ -168,10 +172,7 @@ function getExistingUser() {
 }
 
 //Event Listener - calls the noUser() and validateSignUp() function as soon as the Signup button is clicked
-//makes sure to call the function when the whole page is loaded
-/*document.addEventListener("DOMContentLoaded", function () {*/
     document.getElementById("signupbtn").addEventListener("click", function () {
         noUser();
         validateSignUp();
     });
-/*});*/
