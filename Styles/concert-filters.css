@@ -24,7 +24,7 @@ body {
 
 }
 
-#concertClick {
+#filterConcertsBtn {
     font-size: 20px;
     margin-left: 20%;
     margin-right: 20%;
@@ -57,7 +57,7 @@ p {
 
 }
 
-#signoffbtn, #cancelbtn {
+#signoffbtn {
 
     font-size: 17px;
     margin-left: 20%;
