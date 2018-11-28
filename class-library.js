@@ -1,6 +1,5 @@
 //1. & 2. SIGN-UP & LOG-IN
 
-// Create class User
 class User {
     constructor(firstName, surName, userName, eMail, password) {
         this.firstName = firstName;
@@ -14,7 +13,6 @@ class User {
 
 //3. GEO-LOCATION
 
-//Class UserLoc to match user's location input with user location properties
 class UserLocation {
     constructor(name, lat, lon) {
         this.name = name;
@@ -23,7 +21,6 @@ class UserLocation {
     }
 }
 
-//Class for neighborhood to match with user's location
 class Neighborhood {
     constructor(name, lat, lon) {
         this.name = name;
@@ -32,7 +29,6 @@ class Neighborhood {
     }
 }
 
-//Class Venue to define multiple venues and their location properties
 class Venue {
     constructor(name, lat, lon) {
         this.name = name;
@@ -41,7 +37,6 @@ class Venue {
     }
 }
 
-//Class DistanceVenue to create objects for each venue and their distance to user's location in km
 class DistanceVenue {
     constructor(name, km) {
         this.name = "name";
@@ -51,7 +46,6 @@ class DistanceVenue {
 
 //4. CONCERT FILTER
 
-//Create concerts
 class Concert {
     constructor(artistName, concertName, ticketPrice, venueName, concertGenre, ticketCount, concertTime, concertDate,) {
         this.artistName = artistName;
