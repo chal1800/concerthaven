@@ -1,5 +1,5 @@
 //Sign up - Form validation
-//fill array with already existing users from storage -> receive initial type
+//fill array with already existing users from localStorage -> receive initial type
 let users = getExistingUser();
 
 //in case localStorage is empty - triggered when user clicks on sign up button
@@ -81,7 +81,9 @@ function validateSignUp() {
 }
 // pushing new user into existing array users and storing it in localStorage
 function functionPushStorage() {
+    //get stored users from localStorage
     let users = getExistingUser();
+    //get input data from DOM - create new instance of class User
     let pushUser = new User(document.getElementById("firstName").value, document.getElementById("surName").value, document.getElementById("userName").value, document.getElementById("email").value, document.getElementById("password").value);
 //push new user data in array users
     users.push(pushUser);
@@ -93,15 +95,17 @@ function functionPushStorage() {
 function inputAlphabet(inputtext, alertMsg, element) {
     // Regex includes all letters a-z, upper and lower case, no restriction on length
     const alphaExp = /^[a-zA-Z]+$/;
-    //checks value of inputtext against the regex variable (alphaExp)
+    //checks value of input against the regex variable (alphaExp)
     if (inputtext.value.match(alphaExp)) {
         //in case user changes input value which before didn't meet the requirement the following blanks the alert message shown in DOM
         document.getElementById(element).innerHTML = "";
+        //exit function
         return true;
     } else {
         //inputtext doesn't match alphaExp
         //displays the validation rule
         document.getElementById(element).innerHTML = alertMsg;
+        //exit function
         return false;
     }
 }
@@ -114,39 +118,47 @@ function inputAlphanumeric(inputtext, alertMsg, element) {
     if (inputtext.value.match(alphanumericExp)) {
         //in case user changes input value which before didn't meet the requirement the following blanks the alert message shown in DOM
         document.getElementById(element).innerHTML = "";
+        //exit function
         return true;
     } else {
         //inputtext doesn't match inputAlphanumeric
         //displays the validation rule
         document.getElementById(element).innerHTML = alertMsg;
+        //exit function
         return false;
     }
 }
-// Function that checks whether an user entered valid email address or not and displays alert if requirement is not met
+// Function that checks whether a user entered valid email address or not and displays alert if requirement is not met
 function emailValidation(inputtext, alertMsg, element) {
     // Regex email: any letters possible characters: "-, ".", "+"; must include @ sign followed by possible letters a-z (upper and lower case) and numbers followed by ".", followed by possible letters a-z (upper and lower case), restricted length (min 2, max 4)
     const emailExp = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/;
     if (inputtext.value.match(emailExp)) {
         //in case user changes input value which before didn't meet the requirement the following blanks the alert message shown in DOM
         document.getElementById(element).innerHTML = "";
+        //exit function
         return true;
     } else {
         //inputtext doesn't match regex variable (emailExp)
         //displays the validation rule
         document.getElementById(element).innerHTML = alertMsg;
+        //exit function
         return false;
     }
 }
-// Function that checks whether the input characters are restricted and displays alert message on wrong format
+// Function that checks if the count of input characters meets the restriction and displays alert message if requirement is not met
 function lengthRestriction(inputtext, min, max, element) {
     //variable takes value of input field
     let userInput = inputtext.value;
     //checks if the length of the input field matches the min and max restrictions
     if (userInput.length >= min && userInput.length <= max) {
+        //in case user changes input value which before didn't meet the requirement the following blanks the alert message shown in DOM
         document.getElementById(element).innerHTML = "";
+        //exit function
         return true;
     } else {
+        //displays validation rule
         document.getElementById(element).innerHTML = "* Please enter between " + min + " and " + max + " characters *";
+        //exit function
         return false;
     }
 }
