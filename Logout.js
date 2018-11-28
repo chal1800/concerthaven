@@ -1,4 +1,4 @@
-//function to log out of the website
+//Logout
 function logout() {
     //redirect to login page
     window.location = "loginpage.html";
