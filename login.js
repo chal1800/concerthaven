@@ -1,7 +1,9 @@
-//function is activated when user clicks on login button
+//Login
+//get users from localStorage (key:existingUsers)
 var users = JSON.parse(localStorage.getItem("existingUsers"));
-
+//function to check if input data matches stored data
 function authUser() {
+    //get user input
     let userName = document.getElementById("userName");
     let password = document.getElementById("password");
     //temporary index to check if user exists or not
@@ -15,9 +17,9 @@ function authUser() {
     for (var i = 0; i < users.length; i++) {
         // users[i].username/.password to check that the same user is compared
         if (userName.value === users[i].userName && password.value === users[i].password) {
-            //if username and password match set tempIndex to it's actual index
+            //if username and password match set tempIndex to its actual index
             tempIndex = i;
-             //open main filter page on same tab
+             //open geolocation page on same tab
             window.location = "geo.html";
         }
     }
@@ -26,6 +28,8 @@ function authUser() {
         alert("Your password or username is incorrect. Please try again!");
     }
 }
+//Event Listener - calls the authUser() function as soon as the Login button is clicked
+//makes sure to call the function when the whole page is loaded
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("loginbtn").addEventListener("click", function () {
         authUser();
