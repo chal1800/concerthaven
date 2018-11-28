@@ -68,7 +68,7 @@ function validateSignUp() {
                         // calls function functionPushStorage()
                         functionPushStorage();
                         //redirects to html login page
-                        window.location = "loginpage.html";
+                        window.location = "../HTML/loginpage.html";
                         //exit function
                         return true;
                     }
