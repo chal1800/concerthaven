@@ -157,9 +157,9 @@ function getExistingUser() {
 
 //Event Listener - calls the noUser() and validateSignUp() function as soon as the Signup button is clicked
 //makes sure to call the function when the whole page is loaded
-document.addEventListener("DOMContentLoaded", function () {
+/*document.addEventListener("DOMContentLoaded", function () {*/
     document.getElementById("signupbtn").addEventListener("click", function () {
         noUser();
         validateSignUp();
     });
-});
+/*});*/
