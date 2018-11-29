@@ -1,9 +1,9 @@
 //Login
-//get users from localStorage (key:existingUsers)
+//retrieve users from localStorage (key:existingUsers)
 var users = JSON.parse(localStorage.getItem("existingUsers"));
 //function to check if input data matches stored data
 function authUser() {
-    //get user input
+    //retrieve user input
     let userName = document.getElementById("userName");
     let password = document.getElementById("password");
     //temporary index to check if user exists or not
@@ -11,7 +11,7 @@ function authUser() {
     //first check if either one of the inputs is empty
     if (userName.value === "" || password.value === "") {
         alert("Please type in both username and password!");
-        //return false to get out of the function and wait for a new action
+        //exit function
         return false;
     }
     for (var i = 0; i < users.length; i++) {
@@ -19,11 +19,11 @@ function authUser() {
         if (userName.value === users[i].userName && password.value === users[i].password) {
             //if username and password match set tempIndex to its actual index
             tempIndex = i;
-             //open geolocation page on same tab
+             //open geolocation page
             window.location = "geo.html";
         }
     }
-    //this will only happen when the program checked all the users and tempIndex was never set to i but still set to initial -1
+    //only happens when the program checked all the users and tempIndex was never set to i but still set to initial -1
     if (tempIndex === -1) {
         alert("Your password or username is incorrect. Please try again!");
     }
